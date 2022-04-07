@@ -7,6 +7,7 @@ export interface IUser extends mongoose.Document {
     password: string;
     boards: [string];
     picture: string;
+    resume: string;
     notifications: [
         {
             type: string;
@@ -43,6 +44,9 @@ const UserSchema: Schema = new Schema(
         picture: {
             type: String,
             default: 'defaultUserPicture.png',
+        },
+        resume: {
+            type: String,
         },
         notifications: [
             {

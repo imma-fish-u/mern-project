@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 console.log(process.env.DB_USER);
 mongoose_1.default
-    .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@nodeapi.0g88p.mongodb.net/thullo`, {
+    .connect(`mongodb://localhost:27017/thullo`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

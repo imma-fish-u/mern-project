@@ -22,31 +22,11 @@ const PersonalInfo = ({ mode, personalInfo, onChange }) => {
             />
             <Feild
                 isEdit={isEdit}
-                name="email"
-                label="Email"
-                value={personalInfo.email}
+                name="telegram"
+                label="Telegram Nick"
+                value={personalInfo.telegram}
                 onChange={handleOnChange}
-                placeholder="Enter Email"
-                type="email"
-            />
-            <div className="form-group">
-                <label className='font-weight-bold mb-1'>Address</label>
-                {isEdit ? <textarea className="form-control w-100" rows="3" name="address"
-                    value={personalInfo.address}
-                    onChange={handleOnChange}
-                    placeholder="Enter Address"
-                ></textarea>
-                    : <div className="feild-value">{`${personalInfo.address}`}</div>
-                }
-            </div>
-            <Feild
-                isEdit={isEdit}
-                name="phone"
-                label="Phone Number"
-                value={personalInfo.phone}
-                onChange={handleOnChange}
-                placeholder="Enter Phone Number"
-                type="phone"
+                placeholder="Enter Telegram Nick"
             />
         </div>)
 }

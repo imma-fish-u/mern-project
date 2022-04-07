@@ -5,23 +5,23 @@ import Feild from "./Feild";
 
 
 const defaultValues = {
-    name: "",
     title: "",
-    year: ""
+    description: "",
+    link: "",
 };
 
-const Company = ({ item, addItem, deleteItem, editItem, mode }) => {
-    const [company, setCompany] = useState(item || { id: nanoid(), ...defaultValues });
+const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
+    const [project, setProject] = useState(item || { id: nanoid(), ...defaultValues });
     const [isEdit, setIsEdit] = useState(mode === "add");
 
     const handleOnChange = event => {
         const { name, value } = event.target;
-        setCompany({ ...company, [name]: value });
+        setProject({ ...project, [name]: value });
     };
 
     const handleClick = () => {
         if (isEdit)
-            editItem(company)
+            editItem(project)
         setIsEdit(isEdit => !isEdit)
     }
 
@@ -32,34 +32,34 @@ const Company = ({ item, addItem, deleteItem, editItem, mode }) => {
     return (
         <form className="border p-2" onSubmit={handleSubmit}>
             <div className="row">
-                <div className="col">
-                    <Feild
-                        isEdit={isEdit}
-                        name="name"
-                        label="Company Name"
-                        value={company.name}
-                        onChange={handleOnChange}
-                        placeholder="Enter Comapany Name"
-                    />
-                </div>
                 <div className="col" >
                     <Feild
                         isEdit={isEdit}
                         name="title"
                         label="Title"
-                        value={company.title}
+                        value={project.title}
                         onChange={handleOnChange}
                         placeholder="Enter Title"
+                    />
+                </div>
+                <div className="col" >
+                    <Feild
+                        isEdit={isEdit}
+                        name="description"
+                        label="Description"
+                        value={project.description}
+                        onChange={handleOnChange}
+                        placeholder="Enter Description"
                     />
                 </div>
                 <div className="col">
                     <Feild
                         isEdit={isEdit}
-                        name="year"
-                        label="Joining Year"
-                        value={company.year}
+                        name="link"
+                        label="Link"
+                        value={project.link}
                         onChange={handleOnChange}
-                        placeholder="Year"
+                        placeholder="Link"
                         type="number"
                     />
                 </div>
@@ -68,8 +68,8 @@ const Company = ({ item, addItem, deleteItem, editItem, mode }) => {
                 {(mode === "add") && (
                     <>
                         <button className="mr-2 btn btn-primary" type="submit"
-                            disabled={!(company.name && company.title && company.year)}
-                            onClick={() => addItem(company)}>
+                            disabled={!(project.title && project.description && project.link)}
+                            onClick={() => addItem(project)}>
                             Add Company
                         </button>
                         <button className=" btn btn-danger" onClick={() => addItem("-")}>
@@ -81,10 +81,10 @@ const Company = ({ item, addItem, deleteItem, editItem, mode }) => {
                 {(["edit", "create"].includes(mode)) && (
                     <>
                         <button className="btn btn-primary mr-2" onClick={handleClick}
-                            disabled={!(company.name && company.title && company.year) && isEdit}>
+                            disabled={!(project.title && project.description && project.link) && isEdit}>
                             {isEdit ? "Save" : "Edit"}
                         </button>
-                        <button className="btn btn-danger" onClick={() => deleteItem(company.id)}>
+                        <button className="btn btn-danger" onClick={() => deleteItem(project._id)}>
                             Delete
                         </button>
                     </>
@@ -93,4 +93,4 @@ const Company = ({ item, addItem, deleteItem, editItem, mode }) => {
         </form>
     );
 };
-export default Company;
+export default Project;

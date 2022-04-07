@@ -23,7 +23,7 @@ const Resumes = () => {
     }
 
     return <div>
-        <Link to="/profileCreate" style={{ textDecoration: "none" }}>
+        <Link to="/profile/create" style={{ textDecoration: "none" }}>
             <Card colour={"bg-info text-light"} name={"Create Resume"}></Card>
         </Link>
         <div className='my-5 d-flex flex-wrap'>

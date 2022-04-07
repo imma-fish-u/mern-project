@@ -20,7 +20,7 @@ export const login = (userLogin) => {
                 clearToastByTypes(['danger', 'warning']);
                 addToast(<FiUserCheck />, `Welcome ${user.pseudo} !`, 'neutral');
                 dispatch(getAllBoardByUserID(user._id));
-                dispatch(getAllBoard());
+                //dispatch(getAllBoard());
                 return dispatch({ type: LOGIN, payload: user });
             })
             .catch((err) => {

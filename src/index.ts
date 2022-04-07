@@ -41,7 +41,6 @@ const io = new Server(server, {
 
 const routes: Array<CommonRoutesConfig> = [];
 
-// FAIRE UNE CLASSE SOCKET PROPREMENT
 
 io.on('connection', (socket) => {
     socket.on('send invitation', async ({ senderPseudo, guestUserIDList, boardID, boardName }) => {

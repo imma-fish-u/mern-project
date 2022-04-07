@@ -46,6 +46,9 @@ const UserSchema = new mongoose_1.Schema({
         type: String,
         default: 'defaultUserPicture.png',
     },
+    resume: {
+        type: String,
+    },
     notifications: [
         {
             type: {

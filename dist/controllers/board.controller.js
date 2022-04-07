@@ -156,7 +156,7 @@ class BoardController {
                         notifications: {
                             type: 'BOARD_INVATION',
                             title: 'Board Invitation',
-                            message: `${senderPseudo} vous invite dans le board ${boardName}`,
+                            message: `${senderPseudo} пригласили в проект ${boardName}`,
                             boardIDRequested: boardID,
                         },
                     },

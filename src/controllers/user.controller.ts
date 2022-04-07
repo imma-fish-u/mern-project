@@ -127,4 +127,21 @@ export class UserController {
     public static update(req: Request, res: Response) {
         res.send('Hello from Update');
     }
+
+    public static getUserResume(req: Request, res: Response) {
+        res.send('Hello from Resume');
+    }
+
+    public static async createResume(req: Request, res: Response) {
+        const { pseudo, email, password } = req.body;
+
+        try {
+            await UserModel.create({ pseudo, email, password });
+
+            res.sendStatus(200);
+        } catch (err) {
+            const errors = ErrorManager.checkErrors(['EMAIL_ALREADY_EXIST'], err);
+            return res.status(500).send(errors);
+        }
+    }
 }

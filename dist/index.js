@@ -65,7 +65,6 @@ const io = new socket_io_1.Server(server, {
     },
 });
 const routes = [];
-// FAIRE UNE CLASSE SOCKET PROPREMENT
 io.on('connection', (socket) => {
     socket.on('send invitation', ({ senderPseudo, guestUserIDList, boardID, boardName }) => __awaiter(void 0, void 0, void 0, function* () {
         const invitations = yield board_controller_1.default.sendBoardInvitation(senderPseudo, guestUserIDList, boardID, boardName);
