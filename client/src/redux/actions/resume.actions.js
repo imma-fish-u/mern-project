@@ -26,7 +26,7 @@ export const getResumes = () => {
 };
 
 // Add new Resume
-export const addResume = data => (dispatch, getState) => {
+export const addResume = (data) => {
   return (dispatch) => {
     axios
         .post('/resume/create', data)
@@ -46,7 +46,7 @@ export const addResume = data => (dispatch, getState) => {
 };
 
 // Delete resume from localStorage
-export const deleteResume = resumeId => (dispatch, getState) => {
+export const deleteResume = (resumeId) => {
   return (dispatch) => {
     axios
       .delete(`resume/delete/${resumeId}`)
@@ -61,7 +61,7 @@ export const deleteResume = resumeId => (dispatch, getState) => {
 };
 
 // Update resume on localStorage
-export const updateResume = resume => {
+export const updateResume = (resume) => {
   return (dispatch) => {
     axios
       .put(`resume/update/${resume._id}`)
@@ -76,7 +76,7 @@ export const updateResume = resume => {
 };
 
 // Set current resume
-export const setCurrent = id => dispatch => {
+export const setCurrent = (id) => {
   return (dispatch) => {
     axios
       .get(`resume/getresumebyuserid/${id}`)
