@@ -15,7 +15,6 @@ export default class UserRoutes extends CommonRoutesConfig {
         this.app.route('/api/user/login').post(UserController.login);
         this.app.route('/api/user/all/:id').get(UserController.getUsersByNotMatchBoardID);
         this.app.route('/api/user/delete-notification').post(UserController.deleteNotification);
-        this.app.route('/api/user/resume/:id').get(UserController.getUserResume);
 
         this.app
             .route('/api/user/:id')

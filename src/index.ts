@@ -8,6 +8,7 @@ import { CommonRoutesConfig } from './routes/common.routes.config';
 import cookieParser from 'cookie-parser';
 import UserRoutes from './routes/user.routes';
 import BoardRoutes from './routes/board.routes';
+import ResumeRoutes from './routes/resume.routes';
 import { Server } from 'socket.io';
 import './database/database';
 import BoardController from './controllers/board.controller';
@@ -177,6 +178,7 @@ app.use('/api/attachment', express.static(path.join(__dirname, 'assets', 'attach
  */
 routes.push(new UserRoutes(app));
 routes.push(new BoardRoutes(app));
+routes.push(new ResumeRoutes(app));
 
 if (ON_PRODUCTION) {
     app.use(express.static(path.join(__dirname, '..', 'client', 'build')));

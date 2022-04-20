@@ -40,6 +40,7 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const board_routes_1 = __importDefault(require("./routes/board.routes"));
+const resume_routes_1 = __importDefault(require("./routes/resume.routes"));
 const socket_io_1 = require("socket.io");
 require("./database/database");
 const board_controller_1 = __importDefault(require("./controllers/board.controller"));
@@ -175,6 +176,7 @@ app.use('/api/attachment', express_1.default.static(path_1.default.join(__dirnam
  */
 routes.push(new user_routes_1.default(app));
 routes.push(new board_routes_1.default(app));
+routes.push(new resume_routes_1.default(app));
 if (ON_PRODUCTION) {
     app.use(express_1.default.static(path_1.default.join(__dirname, '..', 'client', 'build')));
     app.get('*', (req, res) => {

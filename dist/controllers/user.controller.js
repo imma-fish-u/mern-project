@@ -34,11 +34,12 @@ class UserController {
     static register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { pseudo, email, password } = req.body;
+            const resume = "";
             try {
                 const isEmailExist = yield user_model_1.default.findOne({ email });
                 if (isEmailExist)
                     throw Error('EMAIL_ALREADY_EXIST : Email already exists');
-                yield user_model_1.default.create({ pseudo, email, password });
+                yield user_model_1.default.create({ pseudo, email, password, resume });
                 res.sendStatus(200);
             }
             catch (err) {
@@ -136,22 +137,6 @@ class UserController {
     }
     static update(req, res) {
         res.send('Hello from Update');
-    }
-    static getUserResume(req, res) {
-        res.send('Hello from Resume');
-    }
-    static createResume(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { pseudo, email, password } = req.body;
-            try {
-                yield user_model_1.default.create({ pseudo, email, password });
-                res.sendStatus(200);
-            }
-            catch (err) {
-                const errors = ErrorManager_1.default.checkErrors(['EMAIL_ALREADY_EXIST'], err);
-                return res.status(500).send(errors);
-            }
-        });
     }
 }
 exports.UserController = UserController;

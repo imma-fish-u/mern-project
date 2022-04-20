@@ -15,9 +15,10 @@ const Work = () => {
     const params = useParams();
     const loading = false;
 
-    useEffect(() => {
-        dispatch(setCurrent(params.id));
-    }, [dispatch, params]);
+    useEffect(() => { 
+        dispatch(setCurrent(params.id.slice(1))); //sclicing ':'
+        console.log(params.id.slice(1))
+    }, [dispatch, params.id]);
 
 
     if (loading || current === null) {
@@ -28,8 +29,8 @@ const Work = () => {
         return <NotFound />;
     }
 
-    if (params.id === current.id)
-        return <Resume resume={current} />
+    if (params.id.slice(1) === current._id)
+        return <Resume/>
     else
         return <Loader />;
 }

@@ -2,14 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 export interface IResume extends mongoose.Document {
   _id: string;
-  personalInfo: [IPersonalInfo];
+  name: string;
+  owner: string;
+  telegram: string;
   projectList: [IProjectList];
   skillList: [ISkillList];
-}
-
-export interface IPersonalInfo extends mongoose.Document {
-  name: string;
-  telegram: string;
 }
 
 export interface IProjectList extends mongoose.Document {
@@ -28,8 +25,12 @@ const ResumeSchema: Schema = new Schema (
   {
     name: {
       type: String,
+      required: true,
     },
     telegram: {
+      type: String,
+    },
+    owner: {
       type: String,
     },
     projectList: [

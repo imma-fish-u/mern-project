@@ -70,7 +70,7 @@ const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
                         <button className="mr-2 btn btn-primary" type="submit"
                             disabled={!(project.title && project.description && project.link)}
                             onClick={() => addItem(project)}>
-                            Add Company
+                            Add Project
                         </button>
                         <button className=" btn btn-danger" onClick={() => addItem("-")}>
                             Cancel

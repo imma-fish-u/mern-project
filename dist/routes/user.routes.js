@@ -13,7 +13,6 @@ class UserRoutes extends common_routes_config_1.CommonRoutesConfig {
         this.app.route('/api/user/login').post(user_controller_1.UserController.login);
         this.app.route('/api/user/all/:id').get(user_controller_1.UserController.getUsersByNotMatchBoardID);
         this.app.route('/api/user/delete-notification').post(user_controller_1.UserController.deleteNotification);
-        this.app.route('/api/user/resume/:id').get(user_controller_1.UserController.getUserResume);
         this.app
             .route('/api/user/:id')
             .get(user_controller_1.UserController.getUser)

@@ -5,8 +5,8 @@ import Header from './Header';
 const PageTemplate = ({
     pageTitle,
     children,
-    isHeaderBoard = false,
-    boardName,
+    isHeaderElement = false,
+    headerElement,
     hasHeader = true,
 }) => {
     const isLoading = useSelector((state) => state.loaderReducer);
@@ -14,7 +14,7 @@ const PageTemplate = ({
 
     return (
         <>
-            {hasHeader && <Header isHeaderBoard={isHeaderBoard} boardName={boardName} />}
+            {hasHeader && <Header isHeaderElement={isHeaderElement} headerElement={headerElement} />}
 
             {children}
         </>

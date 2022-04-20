@@ -9,7 +9,7 @@ import DropDown from '../utils/Dropdown';
 import { addToast, getPicturePath, isEmpty } from '../../utils/utils';
 import ProfilMenu from './dropdown/ProfilMenu';
 
-const Header = ({ isHeaderBoard, boardName }) => {
+const Header = ({ isHeaderElement, headerElement }) => {
     const user = useSelector((state) => state.userReducer);
     const [isOpenSearchBar, setIsOpenSearchBar] = useState(false);
     const [isOpenProfilMenu, setIsOpenProfilMenu] = useState(false);
@@ -65,14 +65,14 @@ const Header = ({ isHeaderBoard, boardName }) => {
                             </svg>
                         </MediaQuery>
                     </Link>
-                    {isHeaderBoard && (
+                    {isHeaderElement && (
                         <div className="header__left__board">
-                            <h2 className="header__left__board__name">{boardName}</h2>
+                            <h2 className="header__left__board__name">{headerElement.name}</h2>
                             <span className="header__left__board__divider"></span>
-                            <Link to="/allboards" className="header__left__board__btn-allboard">
+                            <Link to={headerElement.link} className="header__left__board__btn-allboard">
                                 <BsGrid3X3Gap className="header__left__board__btn-allboard__icons" />
                                 <span className="header__left__board__btn-allboard__label">
-                                    All board
+                                    {headerElement.text}
                                 </span>
                             </Link>
                         </div>

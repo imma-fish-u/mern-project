@@ -17,8 +17,6 @@ const MainRouter = (props) => {
     const user = useSelector((state) => state.userReducer);
     const isLoading = useSelector((state) => state.loaderReducer);
     // const redirect = useSelector((state) => state.redirectReducer);
-    // FAIRE UNE ROUTE PRIVE POUR REDIGER VERS LOGIN SI PAS AUTH
-    // ET ETRE REDIGE SUR LA PAGE ACTUEL SANS BUG (CAR ACTULLEMENT BUG 1 FOIS SUR 5...)
 
     return (
         <>

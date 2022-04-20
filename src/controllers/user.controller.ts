@@ -19,13 +19,13 @@ export class UserController {
 
     public static async register(req: Request, res: Response) {
         const { pseudo, email, password } = req.body;
-
+        const resume = "";
         try {
             const isEmailExist = await UserModel.findOne({ email });
 
             if (isEmailExist) throw Error('EMAIL_ALREADY_EXIST : Email already exists');
 
-            await UserModel.create({ pseudo, email, password });
+            await UserModel.create({ pseudo, email, password, resume });
 
             res.sendStatus(200);
         } catch (err) {
@@ -126,22 +126,5 @@ export class UserController {
 
     public static update(req: Request, res: Response) {
         res.send('Hello from Update');
-    }
-
-    public static getUserResume(req: Request, res: Response) {
-        res.send('Hello from Resume');
-    }
-
-    public static async createResume(req: Request, res: Response) {
-        const { pseudo, email, password } = req.body;
-
-        try {
-            await UserModel.create({ pseudo, email, password });
-
-            res.sendStatus(200);
-        } catch (err) {
-            const errors = ErrorManager.checkErrors(['EMAIL_ALREADY_EXIST'], err);
-            return res.status(500).send(errors);
-        }
     }
 }

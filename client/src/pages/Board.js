@@ -8,7 +8,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import { MdLock, MdAdd } from 'react-icons/md';
 import { getPicturePath, isEmpty } from '../utils/utils';
 import InviteMember from '../components/templates/dropdown/InviteMember';
-import BoardError from './BoardError';
+import Error from './Error';
 import PrivateOrPublic from '../components/templates/dropdown/PrivateOrPublic';
 import BoardMenu from '../components/templates/dropdown/BoardMenu';
 import ListManager from '../components/templates/board/ListManager';
@@ -32,15 +32,18 @@ const Board = (props) => {
     }, [dispatch, id]);
 
     return (
-        // METTRE LE NOM DU BOARD DYNAMIQUEMENT DANS LE TITRE
         <>
             {board === 'BOARD_ERROR' ? (
-                <BoardError />
+                <Error 
+                    title="Board Error"
+                    text="Board not found or is Private"
+                    link="/allboards"
+                />
             ) : (
                 <PageTemplate
-                    boardName={board.name}
+                    headerElement={{name: board.name, link: '/allboards', text: 'All boards'}}
                     pageTitle={`Board - ${board.name}`}
-                    isHeaderBoard={true}>
+                    isHeaderElement={true}>
                     <div className="board">
                         <BoardMenu isOpen={isOpenBoardMenu} setIsOpen={setIsOpenBoardMenu} />
 

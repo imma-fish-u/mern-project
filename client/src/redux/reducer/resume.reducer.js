@@ -6,6 +6,7 @@ import {
   DELETE_RESUME,
   UPDATE_RESUME,
   SET_CURRENT,
+  CLEAN_CURRENTRESUME,
 } from '../actions/resume.actions';
 
 const initialState = {
@@ -44,15 +45,11 @@ export default (state = initialState, action) => {
         )
       };
     case SET_CURRENT:
-      return {
-        ...state,
-        current: action.payload
-      };
+      return { ...state, current: action.payload };
+    case CLEAN_CURRENTRESUME:
+      return { ...state, current: null };
     case SET_LOADING:
-      return {
-        ...state,
-        loading: true
-      };
+      return { ...state, loading: true };
     case RESUMES_ERROR:
       console.error(action.payload);
       return {

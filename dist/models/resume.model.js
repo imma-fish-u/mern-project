@@ -23,8 +23,12 @@ const mongoose_1 = __importStar(require("mongoose"));
 const ResumeSchema = new mongoose_1.Schema({
     name: {
         type: String,
+        required: true,
     },
     telegram: {
+        type: String,
+    },
+    owner: {
         type: String,
     },
     projectList: [
