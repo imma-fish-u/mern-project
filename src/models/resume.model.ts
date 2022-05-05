@@ -4,6 +4,7 @@ export interface IResume extends mongoose.Document {
   _id: string;
   name: string;
   owner: string;
+  github: string;
   telegram: string;
   projectList: [IProjectList];
   skillList: [ISkillList];
@@ -28,6 +29,9 @@ const ResumeSchema: Schema = new Schema (
       required: true,
     },
     telegram: {
+      type: String,
+    },
+    github: {
       type: String,
     },
     owner: {

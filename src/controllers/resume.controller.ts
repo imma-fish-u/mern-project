@@ -11,7 +11,7 @@ export class ResumeController {
 
   public static async create(req: Request, res: Response) {
     const { owner, personalInfo, projectList, skillList } = req.body;
-    const { name, telegram } = personalInfo;
+    const { name, telegram, github } = personalInfo;
 
     try {
       const resume = await Utils.toObject(
@@ -19,6 +19,7 @@ export class ResumeController {
           name,
           owner,
           telegram,
+          github,
           projectList,
           skillList
         })
@@ -73,6 +74,7 @@ export class ResumeController {
         name: personalInfo.name, 
         owner: personalInfo.owner,
         telegram: personalInfo.telegram,
+        github: personalInfo.github,
         projectList: projectList,
         skillList: skillList,
       });
@@ -90,11 +92,11 @@ export class ResumeController {
       const resumeID = req.params.id;
       const resume = Utils.toObject(await ResumeModel.findById(resumeID));
 
-      const userPic = await Utils.toObject(
-        await UserModel.findById(resume.owner).select('picture')
-      );
+      // const userPic = await Utils.toObject(
+      //   await UserModel.findById(resume.owner).select('picture')
+      // );
 
-      res.status(200).send({ userPic, ...resume });
+      res.status(200).send({ ...resume });
     } catch (err) {
         const errors = ErrorManager.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
         console.log(err);
