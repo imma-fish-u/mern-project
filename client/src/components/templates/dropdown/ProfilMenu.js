@@ -27,15 +27,15 @@ const ProfilMenu = ({ isOpen, setIsOpen }) => {
                 <div>
                     <ul className="profilmenu__navlist">
                         <li>
-                            <Link to="/profiles/" className="profilmenu__navlist__item">
+                            <Link to={`/profile/view/:${user.resume}`} className="profilmenu__navlist__item">
                                 <FaUserAlt className="profilmenu__navlist__item__icon" />
-                                Profil
+                                <p>Мой профиль</p>
                             </Link>
                         </li>
                         <li onClick={() => setIsOpenNotification(true)}>
                             <button className="profilmenu__navlist__item">
                                 <MdNotifications className="profilmenu__navlist__item__icon" />
-                                Notifications
+                                <p>Уведомления</p>
                                 {!isEmpty(user.notifications) && (
                                     <span
                                         className="bubble-notifications"
@@ -58,7 +58,7 @@ const ProfilMenu = ({ isOpen, setIsOpen }) => {
                                     document.location.reload();
                                 }}>
                                 <RiLogoutBoxRFill className="profilmenu__navlist__item__icon profilmenu__navlist__item__icon--logout" />
-                                Logout
+                                <p>Выйти</p>
                             </button>
                         </li>
                     </ul>
