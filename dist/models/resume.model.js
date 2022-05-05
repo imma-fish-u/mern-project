@@ -28,6 +28,9 @@ const ResumeSchema = new mongoose_1.Schema({
     telegram: {
         type: String,
     },
+    github: {
+        type: String,
+    },
     owner: {
         type: String,
     },

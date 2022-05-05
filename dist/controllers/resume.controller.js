@@ -21,12 +21,13 @@ class ResumeController {
     static create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, personalInfo, projectList, skillList } = req.body;
-            const { name, telegram } = personalInfo;
+            const { name, telegram, github } = personalInfo;
             try {
                 const resume = yield utils_1.default.toObject(yield resume_model_1.default.create({
                     name,
                     owner,
                     telegram,
+                    github,
                     projectList,
                     skillList
                 }));
@@ -76,6 +77,7 @@ class ResumeController {
                     name: personalInfo.name,
                     owner: personalInfo.owner,
                     telegram: personalInfo.telegram,
+                    github: personalInfo.github,
                     projectList: projectList,
                     skillList: skillList,
                 });
@@ -94,8 +96,10 @@ class ResumeController {
             try {
                 const resumeID = req.params.id;
                 const resume = utils_1.default.toObject(yield resume_model_1.default.findById(resumeID));
-                const userPic = yield utils_1.default.toObject(yield user_model_1.default.findById(resume.owner).select('picture'));
-                res.status(200).send(Object.assign({ userPic }, resume));
+                // const userPic = await Utils.toObject(
+                //   await UserModel.findById(resume.owner).select('picture')
+                // );
+                res.status(200).send(Object.assign({}, resume));
             }
             catch (err) {
                 const errors = ErrorManager_1.default.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
