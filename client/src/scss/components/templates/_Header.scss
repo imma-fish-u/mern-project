@@ -47,6 +47,26 @@
             }
         }
 
+        &__links {
+            @include display(flex, unset, unset, center);
+            gap: 1.5rem;
+        }
+
+        &__link {
+            @include display(flex, unset, unset, center);
+            gap: 5px;
+
+            font-weight: 500;
+            color: $neutralDark;
+            font-size: 1rem;
+            letter-spacing: -1px;
+            text-decoration: none; 
+            text-transform: uppercase; 
+            @media (max-width: 500px) {
+                
+            }    
+        }
+
         &__board {
             @include display(flex, unset, unset, center);
             height: 100%;
@@ -104,73 +124,7 @@
 
     &__right {
         @include display(flex, unset, unset, center);
-
-        &__search {
-            position: relative;
-            width: 338px;
-            height: 100%;
-            box-sizing: border-box;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-right: 20px;
-
-            &__input {
-                box-sizing: border-box;
-                padding-left: 10px;
-                border-radius: 10px;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border: none;
-                padding-right: 86px;
-                @include focus();
-                &::placeholder {
-                    font-size: 0.8rem;
-                    font-weight: 500;
-                    opacity: 0.6;
-                }
-            }
-
-            &__button {
-                @include button(0 16px, 'basic');
-                font-size: 0.7rem;
-                height: 32px;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-            }
-
-            &__responsive {
-                position: relative;
-                height: 100%;
-
-                &__button {
-                    height: 100% !important;
-                    @include button(0 16px, 'basic');
-                    font-size: 0.7rem;
-                    height: 32px;
-                }
-
-                &__dropdown {
-                    &__wrapper {
-                        padding: 6px;
-
-                        &__input {
-                            @include focus();
-                            border: 1px solid $primaryLight;
-                            padding: 15px;
-                            border-radius: 10px;
-                            &::placeholder {
-                                font-size: 0.8rem;
-                                font-weight: 500;
-                                opacity: 0.6;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        
         &__profil {
             margin-left: 15px;
             height: 100%;

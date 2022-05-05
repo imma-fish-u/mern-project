@@ -1,8 +1,5 @@
 .allboards {
-    max-width: 1440px;
-    margin: auto;
-    padding: 0 50px;
-    margin-top: 80px;
+    @include wrapper();
 
     &__top {
         @include display(flex, unset, space-between, center);

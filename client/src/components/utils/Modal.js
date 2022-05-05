@@ -88,7 +88,7 @@ const Modal = ({
                                         <Button
                                             className="modal__content__btn-wrapper__cancel"
                                             onClick={() => setIsOpen(false)}>
-                                            Cancel
+                                            Отмена
                                         </Button>
                                         <Button
                                             className="modal__content__btn-wrapper__confirm"
@@ -99,7 +99,7 @@ const Modal = ({
                                                 </span>
                                             )}
                                             <span className="modal__content__btn-wrapper__confirm__label">
-                                                {btnConfirmMessage ? btnConfirmMessage : 'Confirm'}
+                                                {btnConfirmMessage ? btnConfirmMessage : 'Подтвердить'}
                                             </span>
                                         </Button>
                                     </div>

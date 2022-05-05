@@ -50,8 +50,8 @@ const Board = (props) => {
                         {(board.NOT_MEMBER) ? (
                             <>
                                 <p className="board__not-member">
-                                    This board is public , you can't interact with him if you are not
-                                    member
+                                    Данные проект открытый, вы не можете взаимодействовать с ним если вы 
+                                    не являетесь участником
                                 </p>
                                 <div className="board__top">
                                     <div className="board__top__left">
@@ -87,7 +87,7 @@ const Board = (props) => {
                                             onClick={() => setIsOpenBoardMenu(true)}>
                                             <HiDotsHorizontal className="board__top__right__btn-menu__icon" />
                                             <span className="board__top__right__btn-menu__label">
-                                                Show Menu
+                                                Меню
                                             </span>
                                         </Button>
                                     </div>
@@ -147,7 +147,7 @@ const Board = (props) => {
                                         onClick={() => setIsOpenBoardMenu(true)}>
                                         <HiDotsHorizontal className="board__top__right__btn-menu__icon" />
                                         <span className="board__top__right__btn-menu__label">
-                                            Show Menu
+                                            Меню
                                         </span>
                                     </Button>
                                 </div>

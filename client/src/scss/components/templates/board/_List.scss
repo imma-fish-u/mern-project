@@ -197,6 +197,7 @@
 
     &__item {
         &__btn {
+            @include resetLink();
             @include radius('small');
             padding: 0 6px;
             color: $secondary;
