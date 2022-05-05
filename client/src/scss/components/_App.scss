@@ -7,6 +7,8 @@
 @import './pages/AllBoards';
 @import './pages/Auth';
 @import './pages/Board';
+@import './pages/AllResumes';
+@import './pages/Resume';
 
 @import './templates/Header';
 @import './templates/PageLoader';
@@ -35,3 +37,4 @@
 @import './utils/DropDown';
 @import './utils/Toast';
 @import './utils/Modal';
+@import './utils/Search';

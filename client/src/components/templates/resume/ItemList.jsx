@@ -23,8 +23,8 @@ const ItemList = ({ name, mode, data, onChange, passedItem }) => {
 
     return (
         <div className="my-3 border p-3">
-            <div className="d-flex justify-content-between mb-3">
-                <span className="h3 m-0">{name}</span>
+            <div className="resume__container__block">
+                <div className={`resume__container__title`}>{name}</div>
                 {isEdit && <button className="btn btn-success" onClick={() => setAdd(add => !add)}>+</button>}
             </div>
 

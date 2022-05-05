@@ -7,11 +7,11 @@ const Skills = ({ onChange, skillList, mode }) => {
     const isEdit = ["edit", "create"].includes(mode)
     return (
         <div>
-            <div className="font-weight-bold mb-1">Skills</div>
+            <div className="resume__container__title">Skills</div>
             <div>
                 {isEdit ? (
                     <CreatableSelect
-                        name="skills"
+                        name="Навыки"
                         isMulti
                         placeholder="Enter your skills"
                         options={skillOptions}

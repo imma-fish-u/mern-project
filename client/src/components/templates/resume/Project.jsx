@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { nanoid } from "nanoid";
 import Feild from "./Feild";
+import { HiExternalLink } from 'react-icons/hi';
 
 
 const defaultValues = {
@@ -30,62 +31,58 @@ const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
     }
 
     return (
-        <form className="border p-2" onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="col" >
-                    <Feild
-                        isEdit={isEdit}
-                        name="title"
-                        label="Title"
-                        value={project.title}
-                        onChange={handleOnChange}
-                        placeholder="Enter Title"
-                    />
-                </div>
-                <div className="col" >
-                    <Feild
-                        isEdit={isEdit}
-                        name="description"
-                        label="Description"
-                        value={project.description}
-                        onChange={handleOnChange}
-                        placeholder="Enter Description"
-                    />
-                </div>
-                <div className="col">
-                    <Feild
-                        isEdit={isEdit}
-                        name="link"
-                        label="Link"
-                        value={project.link}
-                        onChange={handleOnChange}
-                        placeholder="Link"
-                        type="number"
-                    />
-                </div>
-            </div>
-            <div className="d-flex justify-content-end">
+        <form className="resume__container__project" onSubmit={handleSubmit}>
+            <Feild
+                isEdit={isEdit}
+                name="title"
+                label="Название"
+                value={project.title}
+                onChange={handleOnChange}
+                placeholder="Enter Title"
+                className="resume__container__project__title"
+            />
+            <Feild
+                isEdit={isEdit}
+                name="description"
+                label="Описание"
+                value={project.description}
+                onChange={handleOnChange}
+                placeholder="Enter Description"
+                className="resume__container__project__description"
+            />
+            <Feild
+                isEdit={isEdit}
+                name="link"
+                label="Ссылка"
+                value={project.link}
+                onChange={handleOnChange}
+                placeholder="Enter Link"
+                isLink={true}
+                icon={<HiExternalLink />}
+                className="resume__container__project__link"
+            />
+            <div className="resume__container__project__btns">
                 {(mode === "add") && (
                     <>
-                        <button className="mr-2 btn btn-primary" type="submit"
+                        <button className="resume__container__btn__primary" type="submit"
                             disabled={!(project.title && project.description && project.link)}
                             onClick={() => addItem(project)}>
-                            Add Project
+                            Добавить проект
                         </button>
-                        <button className=" btn btn-danger" onClick={() => addItem("-")}>
-                            Cancel
+                        <button className="resume__container__btn__secondary" onClick={() => addItem("-")}>
+                            Отмена
                         </button>
                     </>
 
                 )}
                 {(["edit", "create"].includes(mode)) && (
                     <>
-                        <button className="btn btn-primary mr-2" onClick={handleClick}
+                        <button className="resume__container__btn__primary" onClick={handleClick}
                             disabled={!(project.title && project.description && project.link) && isEdit}>
-                            {isEdit ? "Save" : "Edit"}
+                            {isEdit ? "Сохранить" : "Изменить"}
                         </button>
-                        <button className="btn btn-danger" onClick={() => deleteItem(project._id)}>
-                            Delete
+                        <button className="resume__container__btn__secondary" onClick={() => deleteItem(project._id)}>
+                            Удалить
                         </button>
                     </>
                 )}

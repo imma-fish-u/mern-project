@@ -1,13 +1,23 @@
 import React from 'react';
+import { getPicturePath } from '../../../utils/utils';
 
-const Card = ({ colour, name }) => {
+const Card = ({ name, picture, skillList }) => {
+    //console.log(resume.picture);
+
     return (
-        <div className={`card m-3 ${colour}`} style={{ width: "10rem", height: "15rem", cursor: "pointer" }}>
-            <img src={`https://avatars.dicebear.com/api/adventurer-neutral/${name}.svg`} className="card-img-top p-2" alt="...." />
-            <div className="card-body">
-                <h5 className="card-title text-center ">{name}</h5>
-            </div>
-        </div>
+        <>
+            <img
+                className="allresumes__container__items__img"
+                src={getPicturePath('user', picture)}
+                alt={`resume ${name}`}
+            />
+            <span className="allresumes__container__items__title">{name}</span>
+            <ul className="allresumes__container__items__labels">
+                { skillList.map(({ _id, value }) => (
+                    <li key={_id} className="cardlabel allresumes__container__items__labels__skill">{ value }</li>
+                ))}
+            </ul>
+        </>
     )
 };
 

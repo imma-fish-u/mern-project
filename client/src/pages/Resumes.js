@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import PageTemplate from '../components/templates/PageTemplate';
 import Loader from '../components/templates/resume/Loader';
 import Card from '../components/templates/resume/Card';
+import Search from '../components/utils/Search';
 
 const Resumes = () => {
     const resumes = useSelector((state) => state.resumeReducer.resumes);
@@ -25,17 +26,24 @@ const Resumes = () => {
 
     return (
         <PageTemplate pageTitle="Allresumes">
-            <Link to="/profile/create" style={{ textDecoration: "none" }}>
-                <Card colour={"bg-info text-light"} name={"Create Resume"}></Card>
-            </Link>
-            <div className='my-5 d-flex flex-wrap'>
-                {!loading && resumes.length === 0 ? (
-                    <p className='center'>No resumes to show...</p>
-                ) : (
-                    resumes.map((resume) => (<Link to={`/profile/view/:${resume._id}`} key={resume._id} style={{ textDecoration: "none" }}>
-                        <Card colour={"bg-light"} name={resume.name}></Card>
-                    </Link>))
-                )}
+            <div className="wrapper allboards">
+                <div className="allresumes__top">
+                    <h1 className="allresumes__top__title">All Resumes</h1>
+                    <Search />
+                </div>
+                
+                <div className='allresumes__container'>
+                    {!loading && resumes.length === 0 ? (
+                        <p className='center'>No resumes to show...</p>
+                    ) : (
+                            resumes.map((resume) => (
+                                <Link to={`/profile/view/:${resume._id}`} key={resume._id} className="allresumes__container__items">
+                                    <Card { ...resume }></Card>
+                                </Link>
+                            )
+                        )
+                    )}
+                </div>
             </div>
         </PageTemplate>
     );

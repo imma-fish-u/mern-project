@@ -1,0 +1,112 @@
+.resume {
+  @include wrapper();
+  @include display(flex, unset, center, unset);
+  column-gap: 3rem;
+
+  & > * {
+      @include radius('big');
+      @include shadow();
+      padding: 3rem;
+      height: 100%;
+      background-color: $neutralLightest;
+  }
+
+  &__top {
+
+      &__img {
+        background-color: $primaryLight;
+        height: 180px;
+        margin-bottom: 1rem;
+        border-radius: 50%;
+      }
+
+      &__wrapper {
+        text-align: center;
+      }
+
+      &__title {
+          margin-bottom: 1rem;
+          color: $neutralDark;
+          font-size: 1.6rem;
+          font-weight: 500;
+      }
+  }
+
+  &__container {
+    position: relative;
+    max-width: 600px;
+
+    &__btn-menu {
+      @include focus();
+      @include radius('small');
+      position: absolute;
+      top: 3.5rem;
+      right: 10%;
+      border: 2px solid $neutralMidDark;
+    }
+
+    &__title {
+      margin: 1rem 0;
+      font-size: 1.6rem;
+    }
+
+    &__block {
+      @include display(flex, unset, space-between, center);
+    }
+
+    &__link-block {
+      @include display(flex, unset, unset, center);
+      margin-bottom: 0.4rem;
+    }
+
+    &__icon {
+      @include display(flex, unset, unset, unset);
+      padding-right: 0.5rem;
+      font-size: 1.5rem;
+      color: $neutralDark;
+    }
+
+    &__link {
+      display: block;
+      color: $primary;
+    }
+
+    &__personal {
+      &__name {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__project {
+      @include radius('small');
+      margin-bottom: 0.5rem;
+      padding: 1rem;
+      border: 2px solid $primary;
+
+      &__title {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      &__btns {
+        @include display(flex, unset, unset, center);
+        column-gap: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__btn {
+      @include focus();
+      @include resetLink();
+      
+      &__primary {
+        @include button('basic', 'basic', 'primary');
+      }
+
+      &__secondary {
+        @include button('basic', 'basic', 'secondary');
+      }
+    }
+  }
+}
