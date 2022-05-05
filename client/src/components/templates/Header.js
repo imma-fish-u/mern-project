@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../../components/utils/Button';
-import { BsFillCaretDownFill } from 'react-icons/bs';
+import { BsFillCaretDownFill, BsGrid3X3Gap, BsFillPeopleFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { BsGrid3X3Gap } from 'react-icons/bs';
 import MediaQuery from 'react-responsive';
-import DropDown from '../utils/Dropdown';
-import { addToast, getPicturePath, isEmpty } from '../../utils/utils';
+import { getPicturePath, isEmpty } from '../../utils/utils';
 import ProfilMenu from './dropdown/ProfilMenu';
 
 const Header = ({ isHeaderElement, headerElement }) => {
     const user = useSelector((state) => state.userReducer);
-    const [isOpenSearchBar, setIsOpenSearchBar] = useState(false);
     const [isOpenProfilMenu, setIsOpenProfilMenu] = useState(false);
-    const [test, setTest] = useState(1);
 
     return (
         <>
@@ -65,7 +60,7 @@ const Header = ({ isHeaderElement, headerElement }) => {
                             </svg>
                         </MediaQuery>
                     </Link>
-                    {isHeaderElement && (
+                    {isHeaderElement ? (
                         <div className="header__left__board">
                             <h2 className="header__left__board__name">{headerElement.name}</h2>
                             <span className="header__left__board__divider"></span>
@@ -76,50 +71,20 @@ const Header = ({ isHeaderElement, headerElement }) => {
                                 </span>
                             </Link>
                         </div>
-                    )}
+                    ) : (
+											<div className="header__left__links">
+												<Link className="header__left__link" to="/allboards">
+												  <BsGrid3X3Gap />
+													Boards
+												</Link>
+												<Link className="header__left__link" to="/profiles">
+													<BsFillPeopleFill />
+													Profiles
+												</Link>
+											</div>
+										)}
                 </div>
                 <div className="header__right">
-                    <MediaQuery minWidth="1100px">
-                        <div className="header__right__search">
-                            <input
-                                className="header__right__search__input"
-                                type="text"
-                                placeholder="Keyword..."
-                            />
-                            <Button
-                                className="header__right__search__button"
-                                onClick={() => {
-                                    addToast(<BsFillCaretDownFill />, `test ${test}`, 'success');
-                                    setTest(test + 1);
-                                }}>
-                                Search
-                            </Button>
-                        </div>
-                    </MediaQuery>
-                    <MediaQuery maxWidth="1099px">
-                        <div className="header__right__search__responsive">
-                            <Button
-                                className="header__right__search__responsive__button"
-                                onClick={() => setIsOpenSearchBar(true)}>
-                                Search
-                            </Button>
-                            {/* {isOpenSearchBar && ( */}
-                            <DropDown
-                                left="-170px"
-                                top="46px"
-                                isOpen={isOpenSearchBar}
-                                setIsOpen={setIsOpenSearchBar}>
-                                <div className="header__right__search__responsive__dropdown__wrapper">
-                                    <input
-                                        className={`header__right__search__responsive__dropdown__wrapper__input `}
-                                        type="text"
-                                        placeholder="Keyword..."
-                                    />
-                                </div>
-                            </DropDown>
-                            {/* )} */}
-                        </div>
-                    </MediaQuery>
                     <button
                         className="header__right__profil"
                         onClick={() => setIsOpenProfilMenu(true)}>
