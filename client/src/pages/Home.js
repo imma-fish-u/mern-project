@@ -18,12 +18,12 @@ const Home = () => {
             <PageTemplate pageTitle="Allboards">
                 <div className="allboards">
                     <div className="allboards__top">
-                        <h1 className="allboards__top__title">All Boards</h1>
+                        <h1 className="allboards__top__title">Все проекты</h1>
                         <Button
                             className="allboards__top__btn"
                             onClick={() => setIsOpenCreateBoard(true)}>
                             <RiAddFill className="allboards__top__btn__icon" />
-                            <span className="allboards__top__btn__label">Add</span>
+                            <span className="allboards__top__btn__label">Добавить</span>
                         </Button>
                     </div>
 

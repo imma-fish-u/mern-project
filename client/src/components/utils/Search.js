@@ -19,7 +19,7 @@ const Search = () => {
             className="search__button"
             onClick={() => {
             }}>
-            Search
+            Поиск
         </Button>
       </div>
     </MediaQuery>
@@ -28,7 +28,7 @@ const Search = () => {
           <Button
               className="search__responsive__button"
               onClick={() => setIsOpenSearchBar(true)}>
-              Search
+              Поиск
           </Button>
           <DropDown
               left="-170px"

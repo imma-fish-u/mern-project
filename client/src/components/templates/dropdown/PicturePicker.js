@@ -41,8 +41,8 @@ const PicturePicker = ({ isOpen, setIsOpen, boardID, listID, cardID }) => {
             wrapperClass="dropdown-picturepicker"
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            title="Photo Search"
-            description="Search Unsplash for photos"
+            title="Поиск фото"
+            description="Поиск фото на сайте Unsplash"
             contentClass="picturepicker">
             <input className="picturepicker__input" placeholder="Keywords..." type="text" />
             <div className="picturepicker__content">

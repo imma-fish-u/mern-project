@@ -22,7 +22,7 @@ const BoardItem = ({ _id, name, picture, members }) => {
                                 <span
                                     key={uuid()}
                                     className="allboards__container__items__members__others">
-                                    +{members.length - MEMBER_MAX_LENGTH} Others
+                                    +{members.length - MEMBER_MAX_LENGTH} Другие
                                 </span>
                             );
                         return (

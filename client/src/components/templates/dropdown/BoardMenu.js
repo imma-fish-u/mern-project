@@ -23,7 +23,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
     const handleFormatDate = () => {
         if (isEmpty(board)) return;
         const { dayNum, monthLetter, years } = cutMongooseTimestampInDate(board.createdAt);
-        return `on ${dayNum} ${monthLetter}, ${years} `;
+        return `${dayNum} ${monthLetter}, ${years} `;
     };
 
     const handleBanMember = (memberBannedID) => {
@@ -77,7 +77,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                     </div>
                     <div className="boardmenu__content">
                         <div className="boardmenu__content__creator">
-                            <CategoryTitle icon={<FaUserCircle />} title="Made by" />
+                            <CategoryTitle icon={<FaUserCircle />} title="Создан" />
                             <div className="boardmenu__content__creator__profil">
                                 <img
                                     className="boardmenu__content__creator__profil__img"
@@ -101,7 +101,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                             <div className="boardmenu__content__description__top">
                                 <CategoryTitle
                                     icon={<MdDescription />}
-                                    title="Description"
+                                    title="Описание"
                                     withMarginBottom={false}
                                 />
                                 {!isEditDescription && isBoardOwner() && (
@@ -109,7 +109,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                                         className="boardmenu__content__description__top__btn-edit"
                                         onClick={() => setIsEditDescription(!isEditDescription)}>
                                         <MdEdit className="boardmenu__content__description__top__btn-edit__icon" />
-                                        <span>Edit</span>
+                                        <span>Редактировать</span>
                                     </button>
                                 )}
                             </div>
@@ -126,7 +126,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                             )}
                         </div>
                         <div className="boardmenu__content__team">
-                            <CategoryTitle icon={<MdDescription />} title="Team" />
+                            <CategoryTitle icon={<MdDescription />} title="Команда" />
                             <ul className="boardmenu__content__team__list">
                                 {!isEmpty(board) &&
                                     board.members.map((member, index) => {
@@ -150,7 +150,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                                 {board.owner._id === member._id ? (
                                                     <span className="boardmenu__content__team__list__item__admin">
-                                                        Admin
+                                                        Админ
                                                     </span>
                                                 ) : (
                                                     isBoardOwner() && (
@@ -159,7 +159,7 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                                                             onClick={() =>
                                                                 handleBanMember(member._id)
                                                             }>
-                                                            Remove
+                                                            Исключить
                                                         </button>
                                                     )
                                                 )}
@@ -172,14 +172,14 @@ const BoardMenu = ({ isOpen, setIsOpen }) => {
                             <button
                                 className="boardmenu__content__btn-leave"
                                 onClick={() => handleLeaveBoard()}>
-                                Leave
+                                Покинуть
                             </button>
                         )}
                         {isBoardOwner() && (
                             <button
                                 className="boardmenu__content__btn-delete"
                                 onClick={() => handleDeleteBoard()}>
-                                Delete Board
+                                Удалить проект
                             </button>
                         )}
                     </div>

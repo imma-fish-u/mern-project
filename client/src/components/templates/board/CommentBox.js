@@ -50,14 +50,14 @@ const CommentBox = ({ content, setContent, submitFunc, isNewComment = true, user
                         contentEditable={true}></div>
                     {!isDisabledPlaceholder && (
                         <span className="commentbox-input-wrapper__placeholder">
-                            Write a comment...
+                            Оставьте комментарий...
                         </span>
                     )}
                 </div>
             </div>
 
             <div className={`commentbox__toolbar ${isFocus ? 'commentbox__toolbar--open' : ''}`}>
-                <Button onClick={() => handleSubmit()}>{isNewComment ? 'Comment' : 'Save'}</Button>
+                <Button onClick={() => handleSubmit()}>{isNewComment ? 'Прокомментировать' : 'Сохранить'}</Button>
             </div>
         </div>
     );

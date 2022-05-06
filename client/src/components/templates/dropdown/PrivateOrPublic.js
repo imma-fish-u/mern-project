@@ -22,8 +22,8 @@ const PrivateOrPublic = ({ isOpen, setIsOpen }) => {
             top="45px"
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            title="Visibility"
-            description="Choose who can see to this board.">
+            title="Видимость"
+            description="Выберите тип проекта.">
             <button
                 className={`privateorpublic__btn ${
                     !currentBoard.isPrivate ? 'privateorpublic-active' : ''
@@ -32,9 +32,9 @@ const PrivateOrPublic = ({ isOpen, setIsOpen }) => {
                 onClick={() => handleChangeState(false)}>
                 <div className="privateorpublic__btn__top">
                     <MdPublic className="privateorpublic__btn__top__icon" />
-                    <span>Public</span>
+                    <span>Открытый</span>
                 </div>
-                <p className="privateorpublic__btn__desc">Anyone on the internet can see this.</p>
+                <p className="privateorpublic__btn__desc">Любой пользователь может увидеть этот проект.</p>
             </button>
             <button
                 className={`privateorpublic__btn ${
@@ -43,9 +43,9 @@ const PrivateOrPublic = ({ isOpen, setIsOpen }) => {
                 onClick={() => handleChangeState(true)}>
                 <div className="privateorpublic__btn__top">
                     <IoMdLock className="privateorpublic__btn__top__icon" />
-                    <span>Private</span>
+                    <span>Закрытый</span>
                 </div>
-                <p className="privateorpublic__btn__desc">Only board members can see this</p>
+                <p className="privateorpublic__btn__desc">Только члены проекта могут увидеть этот проект.</p>
             </button>
         </DropDown>
     );

@@ -47,7 +47,7 @@ const AddListOrCard = ({
     };
 
     const handleButtonText = () => {
-        return `Add ${isFirstList || isFirstCard ? '' : 'another'} ${isAddList ? 'list' : 'card'}`;
+        return `Добавить ${isAddList ? 'список' : 'задачу'}`;
     };
 
     useEffect(() => {
@@ -96,7 +96,7 @@ const AddListOrCard = ({
                         />
                     </div>
                     <button type="submit" className="addlist__btn-add">
-                        Add {isAddList ? 'list' : 'card'}
+                        Добавить {isAddList ? 'список' : 'задачу'}
                     </button>
                 </form>
             ) : (

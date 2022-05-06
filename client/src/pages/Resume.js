@@ -67,7 +67,7 @@ const Resume = () => {
       {resume === 'RESUME_ERROR' ? (
         <Error
           title="Resume Error"
-          text="Resume not found"
+          text="Резюме не найдено"
           link="/profiles"
         />
       ) : (

@@ -109,13 +109,13 @@ const ListItem = React.forwardRef(({ _id, name, cards, placeHolderProps }, ref) 
                                 <button
                                     type="submit"
                                     className="list__top__rename__btn-wrapper__check list__top__rename__btn-wrapper__btn">
-                                    Save
+                                    Сохранить
                                 </button>
                                 <button
                                     onClick={() => setIsOpenListRename(false)}
                                     type="button"
                                     className="list__top__rename__btn-wrapper__cancel list__top__rename__btn-wrapper__btn">
-                                    Cancel
+                                    Отмена
                                 </button>
                             </div>
                         </form>
@@ -139,7 +139,7 @@ const ListItem = React.forwardRef(({ _id, name, cards, placeHolderProps }, ref) 
                                 <button
                                     className="listmenu__item__btn"
                                     onClick={() => handleOpenListRename()}>
-                                    Rename
+                                    Переименовать
                                 </button>
                             </li>
                             <li className="listmenu__item listmenu__divider"></li>
@@ -147,7 +147,7 @@ const ListItem = React.forwardRef(({ _id, name, cards, placeHolderProps }, ref) 
                                 <button
                                     className="listmenu__item__btn"
                                     onClick={() => setIsOpenConfirmDeleteList(true)}>
-                                    Delete this list
+                                    Удалить этот список
                                 </button>
                             </li>
                         </ul>

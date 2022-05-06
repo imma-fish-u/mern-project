@@ -28,13 +28,13 @@ const Resumes = () => {
         <PageTemplate pageTitle="Allresumes">
             <div className="wrapper allboards">
                 <div className="allresumes__top">
-                    <h1 className="allresumes__top__title">All Resumes</h1>
+                    <h1 className="allresumes__top__title">Все резюме</h1>
                     <Search />
                 </div>
                 
                 <div className='allresumes__container'>
                     {!loading && resumes.length === 0 ? (
-                        <p className='center'>No resumes to show...</p>
+                        <p className='center'>Пока что нет резюме...</p>
                     ) : (
                             resumes.map((resume) => (
                                 <Link to={`/profile/view/:${resume._id}`} key={resume._id} className="allresumes__container__items">

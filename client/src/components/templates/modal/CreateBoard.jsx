@@ -87,12 +87,12 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
                         maxLength="20"
                         className="createboardmodal__input__name"
                         type="text"
-                        placeholder="Add board title"
+                        placeholder="Название..."
                     />
                     <div className="createboardmodal__button__wrapper">
                         <Button className="createboardmodal__button__wrapper__item">
                             <MdImage className="createboardmodal__button__wrapper__item__icon" />{' '}
-                            Cover
+                            Обложка
                         </Button>
                         <Button
                             className={`createboardmodal__button__wrapper__item ${
@@ -105,7 +105,7 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
                                 })
                             }>
                             <MdLock className="createboardmodal__button__wrapper__item__icon" />{' '}
-                            Private
+                            Закрытый
                         </Button>
                     </div>
                 </div>

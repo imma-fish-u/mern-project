@@ -62,12 +62,12 @@ const InviteMember = ({ isOpen, setIsOpen }) => {
             setIsOpen={setIsOpen}
             top="46px"
             left="-4px"
-            title="Invite to Board"
-            description="Search users you want to invite to">
+            title="Пригласить в проект"
+            description="Ищите пользователей, которых вы хотите пригласить в проект">
             <div className="invitemember__input__wrapper">
                 <input
                     className="invitemember__input__wrapper__input"
-                    placeholder="User..."
+                    placeholder="Пользователь..."
                     type="text"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
@@ -115,7 +115,7 @@ const InviteMember = ({ isOpen, setIsOpen }) => {
                     isEmpty(userSelected) ? 'invitemember__btn-invite--disabled' : ''
                 }`}
                 onClick={() => !isEmpty(userSelected) && handleSendInvation()}>
-                Invite
+                Пригласить
             </Button>
         </DropDown>
     );

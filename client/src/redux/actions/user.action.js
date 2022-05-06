@@ -18,7 +18,7 @@ export const login = (userLogin) => {
                 const { user, token } = res.data;
                 setRememberMeCookie(token);
                 clearToastByTypes(['danger', 'warning']);
-                addToast(<FiUserCheck />, `Welcome ${user.pseudo} !`, 'neutral');
+                addToast(<FiUserCheck />, `Добро пожаловать ${user.pseudo} !`, 'neutral');
                 dispatch(getAllBoardByUserID(user._id));
                 //dispatch(getAllBoard());
                 return dispatch({ type: LOGIN, payload: user });
@@ -39,7 +39,7 @@ export const rememberMe = () => {
             .then((res) => {
                 const { user, token } = res.data;
                 setRememberMeCookie(token);
-                addToast(<FiUserCheck />, `Welcome ${user.pseudo} !`, 'neutral');
+                addToast(<FiUserCheck />, `Добро пожаловать ${user.pseudo} !`, 'neutral');
                 dispatch(getAllBoardByUserID(user._id));
                 dispatch(getAllBoard());
                 return dispatch({ type: REMEMBER_ME, payload: user });

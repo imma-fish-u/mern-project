@@ -39,7 +39,7 @@ const Work = () => {
         headerElement={{
           name: "",
           link: "/profiles",
-          text: "All resumes",
+          text: "Все резюме",
         }}
         pageTitle={`Resume - ${current?.name}`}>
           <div className="resume">
@@ -58,8 +58,8 @@ const Work = () => {
                 <Resume/>
               ) : (
                 <>
-                  <p>No resume has been created yet.</p>
-                  <Link to="/profile/create">Create Resume</Link>
+                  <p>Резюме пока не было создано</p>
+                  <Link to="/profile/create">Создать резюме</Link>
                 </>
               )}
           </div>

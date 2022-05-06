@@ -72,17 +72,17 @@ const Header = ({ isHeaderElement, headerElement }) => {
                             </Link>
                         </div>
                     ) : (
-											<div className="header__left__links">
-												<Link className="header__left__link" to="/allboards">
-												  <BsGrid3X3Gap />
-													Boards
-												</Link>
-												<Link className="header__left__link" to="/profiles">
-													<BsFillPeopleFill />
-													Profiles
-												</Link>
-											</div>
-										)}
+                        <div className="header__left__links">
+                            <Link className="header__left__link" to="/allboards">
+                                <BsGrid3X3Gap />
+                                Проекты
+                            </Link>
+                            <Link className="header__left__link" to="/profiles">
+                                <BsFillPeopleFill />
+                                Резюме
+                            </Link>
+                        </div>
+                    )}
                 </div>
                 <div className="header__right">
                     <button

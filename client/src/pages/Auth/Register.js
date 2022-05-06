@@ -23,7 +23,7 @@ const Register = (props) => {
             .then((res) => {
                 setEmailAlreadyExist({});
                 clearToastByTypes(['danger', 'warning']);
-                addToast(<BsBookmarkCheck />, 'Sign Up Successful', 'success');
+                addToast(<BsBookmarkCheck />, 'Пользователь зарегистрирован', 'success');
                 setIsSignUpSuccessful(true);
             })
             .catch((err) => {

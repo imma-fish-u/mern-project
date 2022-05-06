@@ -71,12 +71,12 @@ const AssignMember = ({ isOpen, setIsOpen, cardMembers, cardID, listID }) => {
             wrapperClass="dropdown-invitemember"
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            title="Members"
-            description="Assign members to this card">
+            title="Участники"
+            description="Назначить участника команда на эту задачу">
             <div className="invitemember__input__wrapper">
                 <input
                     className="invitemember__input__wrapper__input"
-                    placeholder="User..."
+                    placeholder="Пользователь..."
                     type="text"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}

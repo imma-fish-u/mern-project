@@ -103,12 +103,12 @@ const Label = ({ labels, boardID, listID, cardID, isOpen, setIsOpen }) => {
             setIsOpen={setIsOpen}
             top="46px"
             contentClass="label"
-            title="Label"
-            description="Select a name and a color">
+            title="Ярлык"
+            description="Выберить название и цвет.">
             <input
                 value={labelName}
                 onChange={(e) => setLabelName(e.target.value)}
-                placeholder="Label..."
+                placeholder="Ярлык..."
                 className="label__input"
                 type="text"
             />
@@ -134,7 +134,7 @@ const Label = ({ labels, boardID, listID, cardID, isOpen, setIsOpen }) => {
                 </div>
             </div>
             <Button className="label__btn-add" onClick={() => handleAddLabel()}>
-                Add
+                Добавить
             </Button>
         </DropDown>
     );

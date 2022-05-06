@@ -108,7 +108,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                                         className="cardmodal__content__left__head__title"
                                     />
                                     <span className="cardmodal__content__left__head__inlist">
-                                        in list{' '}
+                                        в списке{' '}
                                         <span className="cardmodal__content__left__head__inlist__name">
                                             {listName}
                                         </span>
@@ -131,7 +131,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                             <div className="cardmodal__content__right">
                                 <CategoryTitle
                                     icon={<FaUserCircle />}
-                                    title="Actions"
+                                    title="Дополнительно"
                                     spanClass="cardmodal-menu-title"
                                     wrapperClass="cardmodal-menu-title-wrapper"
                                 />
@@ -142,7 +142,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                                         onClick={() => setIsOpenLabel(true)}>
                                         <MdLabel className="cardmodal__content__right__btn__icon" />
                                         <span className="cardmodal__content__right__btn__label">
-                                            Labels
+                                            Ярлыки
                                         </span>
                                     </Button>
                                     <Label
@@ -161,7 +161,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                                         onClick={() => setIsOpenPicturePicker(true)}>
                                         <MdImage className="cardmodal__content__right__btn__icon" />
                                         <span className="cardmodal__content__right__btn__label">
-                                            Cover
+                                            Обложка
                                         </span>
                                     </Button>
                                     <PicturePicker
@@ -176,7 +176,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                                 <div className="cardmodal__content__right__members">
                                     <CategoryTitle
                                         icon={<MdGroup />}
-                                        title="Members"
+                                        title="Участники"
                                         spanClass="cardmodal-menu-title"
                                         wrapperClass="cardmodal-menu-title-wrapper"
                                     />
@@ -198,7 +198,7 @@ const CardModal = ({ isOpen, setIsOpen, _id, listID, listName }) => {
                                         <Button
                                             className="cardmodal__content__right__members__btn-add"
                                             onClick={() => setIsOpenAssignMember(true)}>
-                                            <span>Assign a member</span>{' '}
+                                            <span>Назначить участника</span>{' '}
                                             <MdAdd className="cardmodal__content__right__members__btn-add__icon" />
                                         </Button>
                                         <AssignMember

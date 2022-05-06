@@ -13,7 +13,6 @@ const labelStyle = {
 const CardLabel = ({ name, color, style, isDeleted = false, onClick }) => {
     const handleCheckName = () => {
         if (name.length > 30) return;
-        // AFFICHER ... SI LA CARD EST TROP LONGUE
     };
 
     const handleOnClick = () => {

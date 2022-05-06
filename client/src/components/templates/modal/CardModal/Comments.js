@@ -136,13 +136,13 @@ const Comments = ({ boardID, listID, cardID, comments }) => {
                                             <button
                                                 className="cardmodal__content__left__comment__list__item__head__btn-wrapper__edit"
                                                 onClick={() => handleSetEditComment(_id, message)}>
-                                                Edit
+                                                Редактировать
                                             </button>
                                             -
                                             <button
                                                 className="cardmodal__content__left__comment__list__item__head__btn-wrapper__delete"
                                                 onClick={() => handleDeleteComment(_id)}>
-                                                Delete
+                                                Удалить
                                             </button>
                                         </div>
                                     )}
@@ -163,7 +163,7 @@ const Comments = ({ boardID, listID, cardID, comments }) => {
                                             <Button
                                                 className="cardmodal__content__left__comment__list__item__edit-comment-wrapper__btn-save"
                                                 onClick={() => handleEditComment(_id)}>
-                                                Save
+                                                Сохранить
                                             </Button>
                                             <Button
                                                 className="cardmodal__content__left__comment__list__item__edit-comment-wrapper__btn-cancel"
@@ -173,7 +173,7 @@ const Comments = ({ boardID, listID, cardID, comments }) => {
                                                         isEdit: false,
                                                     })
                                                 }>
-                                                Cancel
+                                                Отменить
                                             </Button>
                                         </div>
                                     </div>

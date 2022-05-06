@@ -23,7 +23,7 @@ const Description = ({ card, listID, board }) => {
             <div className="cardmodal__content__left__description__head">
                 <CategoryTitle
                     icon={<MdDescription />}
-                    title="Description"
+                    title="Описание"
                     withMarginBottom={false}
                 />
                 <Button
@@ -31,7 +31,7 @@ const Description = ({ card, listID, board }) => {
                     onClick={() => setIsOpenEditDesc(true)}>
                     <MdEdit className="cardmodal__content__left__description__head__btn-edit__icon" />
                     <span className="cardmodal__content__left__description__head__btn-edit__label">
-                        Edit
+                        Изменить
                     </span>
                 </Button>
             </div>

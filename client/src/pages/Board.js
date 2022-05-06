@@ -36,13 +36,13 @@ const Board = (props) => {
             {board === 'BOARD_ERROR' ? (
                 <Error 
                     title="Board Error"
-                    text="Board not found or is Private"
+                    text="Проект не найден или является закрытым"
                     link="/allboards"
                 />
             ) : (
                 <PageTemplate
-                    headerElement={{name: board.name, link: '/allboards', text: 'All boards'}}
-                    pageTitle={`Board - ${board.name}`}
+                    headerElement={{name: board.name, link: '/allboards', text: 'Все проекты'}}
+                    pageTitle={`Проект - ${board.name}`}
                     isHeaderElement={true}>
                     <div className="board">
                         <BoardMenu isOpen={isOpenBoardMenu} setIsOpen={setIsOpenBoardMenu} />
@@ -50,7 +50,7 @@ const Board = (props) => {
                         {(board.NOT_MEMBER) ? (
                             <>
                                 <p className="board__not-member">
-                                    Данные проект открытый, вы не можете взаимодействовать с ним если вы 
+                                    Данный проект открытый, вы не можете взаимодействовать с ним если вы 
                                     не являетесь участником
                                 </p>
                                 <div className="board__top">
@@ -101,7 +101,7 @@ const Board = (props) => {
                                             className="board__top__left__btn-state"
                                             onClick={() => setIsOpenPrivateOrPublic(true)}>
                                             <MdLock className="board__top__left__btn-state__icon" />
-                                            {board.isPrivate ? 'Private' : 'Public'}
+                                            {board.isPrivate ? 'Закрытый' : 'Открытый'}
                                         </Button>
                                         <PrivateOrPublic
                                             isOpen={isOpenPrivateOrPublic}

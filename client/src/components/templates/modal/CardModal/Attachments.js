@@ -73,7 +73,7 @@ const Attachments = ({ boardID, listID, cardID, attachments }) => {
             <div className="cardmodal__content__left__attachements__head">
                 <CategoryTitle
                     icon={<MdDescription />}
-                    title="Attachements"
+                    title="Вложения"
                     withMarginBottom={false}
                 />
                 <label
@@ -87,7 +87,7 @@ const Attachments = ({ boardID, listID, cardID, attachments }) => {
                         </Button> */}
                     <MdAdd className="cardmodal__content__left__attachements__head__btn-add__icon" />
                     <span className="cardmodal__content__left__attachements__head__btn-add__label">
-                        Add
+                        Добавить
                     </span>
                     <input
                         type="file"
@@ -125,12 +125,12 @@ const Attachments = ({ boardID, listID, cardID, attachments }) => {
                                     <Button
                                         className="cardmodal__content__left__attachements__list__item__right__btn-wrapper__item"
                                         onClick={() => handleDownloadAttachment(name, filePath)}>
-                                        Download
+                                        Скачать
                                     </Button>
                                     <Button
                                         className="cardmodal__content__left__attachements__list__item__right__btn-wrapper__item"
                                         onClick={() => handleDeleteAttachement(_id)}>
-                                        Delete
+                                        Удалить
                                     </Button>
                                 </div>
                             </div>
