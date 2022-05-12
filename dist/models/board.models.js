@@ -32,7 +32,7 @@ const BoardSchema = new mongoose_2.Schema({
     },
     description: {
         type: String,
-        default: 'Ceci est une description',
+        default: 'Здесь есть некоторое описание...',
     },
     lists: [
         {

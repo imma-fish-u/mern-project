@@ -109,7 +109,7 @@ export default class BoardController {
         // res.send({ name: 'toto' });
         try {
             const userToken: string = req.cookies.token;
-
+            console.log(userToken);
             if (!userToken) throw Error('NO_TOKEN : Error token unknown');
             const id = req.params.id;
 
@@ -181,7 +181,7 @@ export default class BoardController {
                     $push: {
                         notifications: {
                             type: 'BOARD_INVATION',
-                            title: 'Board Invitation',
+                            title: 'Приглашение в проект',
                             message: `${senderPseudo} пригласили в проект ${boardName}`,
                             boardIDRequested: boardID,
                         },

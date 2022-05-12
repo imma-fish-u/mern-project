@@ -35,6 +35,7 @@ const Modal = ({
             if (!modalRef.current.contains(e.target)) {
                 setIsOpen(false);
             }
+            console.log('heyy')
         };
 
         window.addEventListener('mousedown', handleCloseModal);

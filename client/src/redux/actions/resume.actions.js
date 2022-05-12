@@ -30,19 +30,22 @@ export const getResumes = () => {
 // Add new Resume
 export const addResume = (data) => {
   return (dispatch) => {
-    console.log(data)
+    dispatch(loading());
     axios
       .post('/resume/create', data, {headers:{"Content-Type" : "application/json"}})
       .then((res) => {
         const resume = res.data;
         console.log(resume);
-        successToast(`Resume ${resume.name} created !`);
-        return dispatch({ type: ADD_RESUME, payload: resume });
+        successToast(`Резюме ${resume.name} создано !`);
+        dispatch({ type: ADD_RESUME, payload: resume });
       })
       .catch((err) => {
         console.log(err);
         const errors = err.response.data;
         errorsManager(errors);
+      })
+      .finally(() => {
+        dispatch(endLoading());
       });
   };
 };
@@ -50,6 +53,7 @@ export const addResume = (data) => {
 // Delete resume from localStorage
 export const deleteResume = (resumeId) => {
   return (dispatch) => {
+    dispatch(loading());
     axios
       .delete(`resume/delete/${resumeId}`)
       .then((res) => {
@@ -58,21 +62,28 @@ export const deleteResume = (resumeId) => {
       .catch((err) => {
         console.log(err);
         dispatch({ type: RESUMES_ERROR, payload: err.response.statusText });
+      })
+      .finally(() => {
+        dispatch(endLoading());
       });
   };
 };
 
 // Update resume on localStorage
-export const updateResume = (resume) => {
+export const updateResume = (user) => {
   return (dispatch) => {
+    dispatch(loading());
     axios
-      .put(`resume/update/${resume._id}`, resume)
+      .put(`resume/update/${user._id}`, user)
       .then((res) => {
-        dispatch({ type: UPDATE_RESUME, payload: resume })
+        dispatch({ type: UPDATE_RESUME, payload: user })
       })
       .catch((err) => {
         console.log(err);
         dispatch({ type: RESUMES_ERROR, payload: err.response.statusText });
+      })
+      .finally(() => {
+        dispatch(endLoading());
       });
   };
 };

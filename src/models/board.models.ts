@@ -78,7 +78,7 @@ const BoardSchema = new Schema(
         },
         description: {
             type: String,
-            default: 'Ceci est une description',
+            default: 'Здесь есть некоторое описание...',
         },
         lists: [
             {

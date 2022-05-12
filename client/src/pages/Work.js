@@ -1,37 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { setCurrent } from '../redux/actions/resume.actions';
+import { cleanCurrentResume, setCurrent } from '../redux/actions/resume.actions';
 
-import { Link, useParams } from 'react-router-dom';
-import { getPicturePath } from '../utils/utils';
-
+import { useLocation } from 'react-router-dom';
 import PageTemplate from '../components/templates/PageTemplate';
 import Resume from "./Resume"
-import Loader from '../components/templates/resume/Loader';
-import NotFound from './NotFound';
 
 const Work = () => {
     const current = useSelector((state) => state.resumeReducer.current);
     const user = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
-    const params = useParams();
-    const loading = false;
-    let id = useRef('');
+    const [mode, setMode] = useState("");
+
+    let location = useLocation();
+    const url_split = useRef(null);
 
     useEffect(() => { 
-        id.current = params.id.slice(1);
-        dispatch(setCurrent(id.current)); //sclicing ':'
-    }, [dispatch, params.id]);
+      url_split.current = location.pathname.split('/');
+      setMode(url_split.current[2]);
+      dispatch(setCurrent(url_split.current[3].slice(1))); //sclicing ':'
+      return () => {
+        dispatch(cleanCurrentResume());
+      }
+    }, [dispatch, location]);
 
-
-    if (loading || current === null) {
-        return <Loader />;
-    }
-
-    if (current === "NOT_FOUND") {
-        return <NotFound />;
-    }
 
     return (
       <PageTemplate
@@ -42,27 +35,7 @@ const Work = () => {
           text: "Все резюме",
         }}
         pageTitle={`Resume - ${current?.name}`}>
-          <div className="resume">
-            <div className="resume__top">
-              <img
-                className="resume__top__img"
-                src={getPicturePath('user', user.picture)}
-                alt={`profile ${user.pseudo}`}
-              />
-              <div className="resume__top__wrapper">
-                <h1 className="resume__top__title">@{user.pseudo}</h1>
-                <span className="resume__top__info">{user.email}</span>
-              </div>
-            </div>
-              {id.current === current._id ? (
-                <Resume/>
-              ) : (
-                <>
-                  <p>Резюме пока не было создано</p>
-                  <Link to="/profile/create">Создать резюме</Link>
-                </>
-              )}
-          </div>
+          {current && <Resume mode={mode} id={url_split.current[3].slice(1)}/>}
       </PageTemplate>
     );
 }

@@ -8,7 +8,6 @@ import Utils from '../utils/utils';
 
 
 export class ResumeController {
-
   public static async create(req: Request, res: Response) {
     const { owner, personalInfo, projectList, skillList } = req.body;
     const { name, telegram, github } = personalInfo;
@@ -49,15 +48,13 @@ export class ResumeController {
 
   public static async delete(req: Request, res: Response) {
     try {
-      const resumeID = req.params.id;
+      const userID = req.params.id;
+      const user = Utils.toObject(await UserModel.findById(userID));
+      await ResumeModel.findByIdAndDelete(user.resume);
+      console.log(userID);
+      const userUpdated = await UserModel.findByIdAndUpdate(userID, { resume: "" });
 
-      await ResumeModel.findByIdAndDelete(resumeID);
-
-      const user = await UserModel.findByIdAndUpdate(resumeID, {
-        $pull: { resume: resumeID },
-      });
-
-      res.status(200).send(user);
+      res.status(200).send(userUpdated);
     } catch (err) {
       const errors = ErrorManager.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
       console.log(err);
@@ -68,9 +65,9 @@ export class ResumeController {
   public static async update(req: Request, res: Response) {
     try {
       const { _id, personalInfo, projectList, skillList } = req.body;
+      const user = Utils.toObject(await UserModel.findById(_id));
       console.log(personalInfo)
-      const newResume = await ResumeModel.findOneAndReplace({ _id: _id }, {
-        _id: _id,
+      const newResume = await ResumeModel.findOneAndReplace({ _id: user.resume }, {
         name: personalInfo.name, 
         owner: personalInfo.owner,
         telegram: personalInfo.telegram,
@@ -78,7 +75,7 @@ export class ResumeController {
         projectList: projectList,
         skillList: skillList,
       });
-      console.log()
+      console.log(newResume)
       res.status(200).send(newResume);
     } catch (err) {
       const errors = ErrorManager.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
@@ -89,14 +86,15 @@ export class ResumeController {
 
   public static async getResume(req: Request, res: Response) {
     try {
-      const resumeID = req.params.id;
-      const resume = Utils.toObject(await ResumeModel.findById(resumeID));
-
-      // const userPic = await Utils.toObject(
-      //   await UserModel.findById(resume.owner).select('picture')
-      // );
-
-      res.status(200).send({ ...resume });
+      const userID = req.params.id;
+      const user = Utils.toObject(await UserModel.findById(userID));
+      const { pseudo, email, picture, resume } = user;
+      if (resume) {
+        const resumeData = Utils.toObject(await ResumeModel.findById(resume));
+        res.status(200).send({ pseudo, email, picture, ...resumeData});
+      } else {
+        res.status(200).send({ pseudo, email, picture });
+      } 
     } catch (err) {
         const errors = ErrorManager.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
         console.log(err);

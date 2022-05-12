@@ -79,12 +79,12 @@ const ContentEditable = ({ setIsOpen, content, submitFunc, HTMLInjectedRef }) =>
                 <Button
                     className="editdescription__btn-wrapper__btn-send"
                     onClick={() => handleSaveDescription()}>
-                    Save
+                    Сохранить
                 </Button>
                 <button
                     className="editdescription__btn-wrapper__btn-cancel"
                     onClick={() => setIsOpen(false)}>
-                    Cancel
+                    Отменить
                 </button>
             </div>
         </>

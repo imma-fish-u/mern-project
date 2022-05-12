@@ -7,8 +7,24 @@
 
         &__title {
             color: $neutralDark;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 500;
+        }
+
+        &__menu {
+            @include display(flex, unset, unset, center);
+
+            &__btn {
+                padding: 1rem;
+                border-radius: 10px 10px 0 0;
+                border: 1px solid $neutralMidDark;
+                background-color: $neutralLight;
+                cursor: pointer;
+                
+                &__active {
+                    background-color: transparent;                    
+                }
+            }
         }
 
         &__btn {

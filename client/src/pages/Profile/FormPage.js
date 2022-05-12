@@ -65,13 +65,13 @@ const FormPage = (props) => {
                 <button
                     type="submit"
                     className="list__top__rename__btn-wrapper__check list__top__rename__btn-wrapper__btn">
-                    Save
+                    Сохранить
                 </button>
                 <button
                     onClick={() => setIsOpenProfileEdit(false)}
                     type="button"
                     className="list__top__rename__btn-wrapper__cancel list__top__rename__btn-wrapper__btn">
-                    Cancel
+                    Отменить
                 </button>
             </div>
         </form>

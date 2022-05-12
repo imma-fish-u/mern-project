@@ -53,12 +53,12 @@ class ResumeController {
     static delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const resumeID = req.params.id;
-                yield resume_model_1.default.findByIdAndDelete(resumeID);
-                const user = yield user_model_1.default.findByIdAndUpdate(resumeID, {
-                    $pull: { resume: resumeID },
-                });
-                res.status(200).send(user);
+                const userID = req.params.id;
+                const user = utils_1.default.toObject(yield user_model_1.default.findById(userID));
+                yield resume_model_1.default.findByIdAndDelete(user.resume);
+                console.log(userID);
+                const userUpdated = yield user_model_1.default.findByIdAndUpdate(userID, { resume: "" });
+                res.status(200).send(userUpdated);
             }
             catch (err) {
                 const errors = ErrorManager_1.default.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);
@@ -71,9 +71,9 @@ class ResumeController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { _id, personalInfo, projectList, skillList } = req.body;
+                const user = utils_1.default.toObject(yield user_model_1.default.findById(_id));
                 console.log(personalInfo);
-                const newResume = yield resume_model_1.default.findOneAndReplace({ _id: _id }, {
-                    _id: _id,
+                const newResume = yield resume_model_1.default.findOneAndReplace({ _id: user.resume }, {
                     name: personalInfo.name,
                     owner: personalInfo.owner,
                     telegram: personalInfo.telegram,
@@ -81,7 +81,7 @@ class ResumeController {
                     projectList: projectList,
                     skillList: skillList,
                 });
-                console.log();
+                console.log(newResume);
                 res.status(200).send(newResume);
             }
             catch (err) {
@@ -94,12 +94,16 @@ class ResumeController {
     static getResume(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const resumeID = req.params.id;
-                const resume = utils_1.default.toObject(yield resume_model_1.default.findById(resumeID));
-                // const userPic = await Utils.toObject(
-                //   await UserModel.findById(resume.owner).select('picture')
-                // );
-                res.status(200).send(Object.assign({}, resume));
+                const userID = req.params.id;
+                const user = utils_1.default.toObject(yield user_model_1.default.findById(userID));
+                const { pseudo, email, picture, resume } = user;
+                if (resume) {
+                    const resumeData = utils_1.default.toObject(yield resume_model_1.default.findById(resume));
+                    res.status(200).send(Object.assign({ pseudo, email, picture }, resumeData));
+                }
+                else {
+                    res.status(200).send({ pseudo, email, picture });
+                }
             }
             catch (err) {
                 const errors = ErrorManager_1.default.checkErrors(['RESUME_UNKNOWN', 'INVALID_ID'], err);

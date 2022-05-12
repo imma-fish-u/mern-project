@@ -29,7 +29,7 @@ const MainRouter = (props) => {
                     <PrivateRoute path="/profiles" component={Resumes} />
                     <PrivateRoute path="/profile/view/:id" component={Work} />
                     <PrivateRoute path="/profile/edit/:id" component={Work} />
-                    <PrivateRoute path="/profile/create" component={Resume} />
+                    <PrivateRoute path="/profile/create/:id" component={Work} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     {!isEmpty(user) && document.location.pathname === '/' && (

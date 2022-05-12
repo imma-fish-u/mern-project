@@ -37,7 +37,7 @@ const Resumes = () => {
                         <p className='center'>Пока что нет резюме...</p>
                     ) : (
                             resumes.map((resume) => (
-                                <Link to={`/profile/view/:${resume._id}`} key={resume._id} className="allresumes__container__items">
+                                <Link to={`/profile/view/:${resume.owner}`} key={resume._id} className="allresumes__container__items">
                                     <Card { ...resume }></Card>
                                 </Link>
                             )

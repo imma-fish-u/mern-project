@@ -40,7 +40,7 @@ const ItemList = ({ name, mode, data, onChange, passedItem }) => {
                 ))
             ) : (
                 <div className="text-center d-flex justify-content-center align-items-center bg-light my-3" style={{ height: '100px' }}>
-                    <span>{`No ${name.toLowerCase()} added .`}</span>
+                    <span>{`${name} не добавлены.`}</span>
                 </div>
             )
             }

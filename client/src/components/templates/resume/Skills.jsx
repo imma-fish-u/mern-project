@@ -6,8 +6,8 @@ import { skillOptions } from "../../data/skillOptions";
 const Skills = ({ onChange, skillList, mode }) => {
     const isEdit = ["edit", "create"].includes(mode)
     return (
-        <div>
-            <div className="resume__container__title">Skills</div>
+        <div className="resume__container__skills">
+            <div className="resume__container__title">Навыки</div>
             <div>
                 {isEdit ? (
                     <CreatableSelect
@@ -17,13 +17,14 @@ const Skills = ({ onChange, skillList, mode }) => {
                         options={skillOptions}
                         onChange={onChange}
                         value={skillList}
+                        className="resume__container__dropdown"
                     />
                 ) : (
-                    <div className="">
+                    <div>
                         {skillList.length > 0 ? (
                             skillList.map((skill) => skill.label).join(", ")
                         ) : (
-                            <div className="no-items">No skills added.</div>
+                            <div className="no-items">Навыки не добавлены.</div>
                         )}
                     </div>
                 )}

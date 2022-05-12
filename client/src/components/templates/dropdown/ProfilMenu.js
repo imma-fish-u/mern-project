@@ -27,7 +27,7 @@ const ProfilMenu = ({ isOpen, setIsOpen }) => {
                 <div>
                     <ul className="profilmenu__navlist">
                         <li>
-                            <Link to={`/profile/view/:${user.resume}`} className="profilmenu__navlist__item">
+                            <Link to={`/profile/view/:${user._id}`} className="profilmenu__navlist__item">
                                 <FaUserAlt className="profilmenu__navlist__item__icon" />
                                 <p>Мой профиль</p>
                             </Link>

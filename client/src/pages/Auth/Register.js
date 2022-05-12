@@ -81,7 +81,7 @@ const Register = (props) => {
                         className="auth__component"
                         onSubmit={userRegister.handleSubmit}
                         noValidate>
-                        <h1 className="auth__title">Register</h1>
+                        <h1 className="auth__title">Регистрация</h1>
                         <div className="auth__input__wrapper">
                             <input
                                 className="auth__input"
@@ -92,7 +92,7 @@ const Register = (props) => {
                                 className={`placeholder ${
                                     userRegister.values.pseudo && 'placeholder_active'
                                 }`}>
-                                Pseudo
+                                Ник-нейм
                             </span>
                         </div>
                         {userRegister.touched.pseudo && userRegister.errors.pseudo && (
@@ -127,7 +127,7 @@ const Register = (props) => {
                                 className={`placeholder ${
                                     userRegister.values.password && 'placeholder_active'
                                 }`}>
-                                Password
+                                Пароль
                             </span>
                         </div>
                         {userRegister.touched.password && userRegister.errors.password && (
@@ -143,7 +143,7 @@ const Register = (props) => {
                                 className={`placeholder ${
                                     userRegister.values.confirmPassword && 'placeholder_active'
                                 }`}>
-                                Confirm Password
+                                Подтвердите пароль
                             </span>
                         </div>
                         {userRegister.touched.confirmPassword &&
@@ -154,10 +154,10 @@ const Register = (props) => {
                             type="submit"
                             className="auth__btn"
                             style={{ position: 'relative' }}>
-                            {isLoading ? <Loader color="white" radius="28" /> : 'Register'}
+                            {isLoading ? <Loader color="white" radius="28" /> : 'Регистрация'}
                         </Button>
                         <p className="auth__has-account">
-                            You have already account ? <Link to="/login">Connexion</Link>
+                            У вас есть аккаунт ? <Link to="/login">Войти</Link>
                         </p>
                     </form>
                 </AuthWrapper>

@@ -6,7 +6,6 @@
 }
 
 @mixin focus($color: $primary) {
-    // desactive le focus a 650px
     @media (min-width: 650px) {
         transition: 0.3s;
         &:focus {

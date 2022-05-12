@@ -11,7 +11,7 @@ const Feild = ({ isEdit, label, isLink = false, icon, ...rest }) => {
             ) : isLink ? ( 
                 <div className='resume__container__link-block'>
                     <i className='resume__container__icon'>{icon}</i>
-                    <Link className='resume__container__link'>{rest.value}</Link>
+                    <Link className='resume__container__link' to={rest.value}>{rest.value}</Link>
                 </div>    
                 ) : (
                     <div className={rest.className}>{rest.value}</div>

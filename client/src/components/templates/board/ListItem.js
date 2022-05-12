@@ -87,7 +87,7 @@ const ListItem = React.forwardRef(({ _id, name, cards, placeHolderProps }, ref) 
                 isOpen={isOpenConfirmDeleteList}
                 setIsOpen={setIsOpenConfirmDeleteList}
                 hasChoiceButton={true}
-                confirmMessage="Are your sure delete this list ?"
+                confirmMessage="Вы действительно хотите удалить этот список ?"
                 confirmFunction={() => handleDeleteList()}
             />
 

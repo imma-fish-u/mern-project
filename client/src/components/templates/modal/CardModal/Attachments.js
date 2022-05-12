@@ -53,7 +53,7 @@ const Attachments = ({ boardID, listID, cardID, attachments }) => {
     const handleFormatDate = (createdAt) => {
         if (isEmpty(createdAt)) return;
         const { dayNum, monthLetter, years } = cutMongooseTimestampInDate(createdAt);
-        return `Added ${monthLetter} ${dayNum}, ${years}`;
+        return `Добавлен ${monthLetter} ${dayNum}, ${years}`;
     };
 
     const handleDownloadAttachment = (name, filePath) => {

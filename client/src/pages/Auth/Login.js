@@ -22,7 +22,7 @@ const Login = (props) => {
         <PageTemplate pageTitle="Login" hasHeader={false}>
             <AuthWrapper>
                 <form className="auth__component" onSubmit={handleLogin} noValidate>
-                    <h1 className="auth__title">Login</h1>
+                    <h1 className="auth__title">Логин</h1>
                     <div className="auth__input__wrapper">
                         <input
                             className="auth__input"
@@ -44,9 +44,9 @@ const Login = (props) => {
                             }
                         />
                     </div>
-                    <Button className="auth__btn">Connexion</Button>
+                    <Button className="auth__btn">Войти</Button>
                     <p className="auth__has-account">
-                        You don't have account ? <Link to="/register">Register</Link>
+                        У вас нет аккаунта ? <Link to="/register">Зарегистрироваться</Link>
                     </p>
                 </form>
             </AuthWrapper>

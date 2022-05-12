@@ -57,7 +57,7 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
                 setIsOpen={setIsOpen}
                 hasChoiceButton={true}
                 btnConfirmIcon={<RiAddFill />}
-                btnConfirmMessage="Create"
+                btnConfirmMessage="Создать"
                 confirmFunction={() => handleCreateBoard()}>
                 <div className="createboardmodal">
                     <label

@@ -28,7 +28,7 @@ const Notifications = ({ isOpen, setIsOpen }) => {
                 <div className="profilmenu__notifications">
                     <span className="profilmenu__notifications__top">
                         <MdNotifications className="profilmenu__notifications__top__icon" />
-                        Notifications
+                        Уведомления
                     </span>
                     <ul className="profilmenu__notifications__list">
                         {!isEmpty(user.notifications) ? (
@@ -73,7 +73,7 @@ const Notifications = ({ isOpen, setIsOpen }) => {
                             })
                         ) : (
                             <h4 style={{ textAlign: 'center', marginTop: '20px' }}>
-                                You don't have notifications
+                                У вас нет новых уведомлений
                             </h4>
                         )}
                     </ul>
