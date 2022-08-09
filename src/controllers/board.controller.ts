@@ -19,9 +19,10 @@ export default class BoardController {
         // return await UserModel.find({ _id: { $in: usersID } });
     }
 
-    public static async create(req: Request, res: Response) {
+    public static async create(req, res: Response) {
         const { name, isPrivate, owner } = req.body;
         const boardPicture = req.file;
+        console.log(boardPicture)
         try {
             if (!name) throw Error('MISSING_NAME : Missing board name');
             if (name.length > 20)
@@ -120,7 +121,6 @@ export default class BoardController {
                 try {
                     if (Utils.isEmpty(docs)) throw Error('BOARD_UNKNOWN : Error board unknown');
                     const board: IBoard = await docs.toObject();
-                    console.log('PASSING EMPTY DOCS GET BOARD');
 
                     if (board.isPrivate) {
                         if (!board.members.includes(userID))

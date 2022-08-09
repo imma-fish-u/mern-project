@@ -19,17 +19,18 @@ const fs_1 = __importDefault(require("fs"));
 class FileManager {
     static uploadPicture(label, directory, file) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (file.detectedMimeType !== 'image/jpg' &&
-                file.detectedMimeType !== 'image/png' &&
-                file.detectedMimeType !== 'image/jpeg')
+            console.log(file.mimetype);
+            if (file.mimetype !== 'image/jpg' &&
+                file.mimetype !== 'image/png' &&
+                file.mimetype !== 'image/jpeg') {
                 throw Error('INVALID_TYPE : File must be of type png / jpg / jpeg');
-            if (file.size > 500000)
-                throw Error('MAX_SIZE : File must be max 0.5 Ko');
-            const pipelinee = util_1.promisify(stream_1.pipeline);
+            }
+            // if (file.size > 500000000) throw Error('MAX_SIZE : File must be max 0.5 Ko');
             const cleanLabel = label.replace(' ', '');
             const pictureName = `${cleanLabel}${Math.floor(Math.random() * 1000)}${Date.now()}.png`;
             const uploadFilePath = path_1.default.join(__dirname, '..', 'assets', 'images', directory, pictureName);
-            yield pipelinee(file.stream, fs_1.default.createWriteStream(uploadFilePath));
+            const writeStream = fs_1.default.createWriteStream(uploadFilePath);
+            writeStream.write(file.buffer);
             return pictureName;
         });
     }
@@ -38,9 +39,10 @@ class FileManager {
             // if (file.size > 500000) throw Error('MAX_SIZE : File must be max 0.5 Ko');
             const pipelinee = util_1.promisify(stream_1.pipeline);
             const cleanLabel = label.replace(' ', '');
-            const fileName = `${cleanLabel}${Math.floor(Math.random() * 1000)}${Date.now()}-${file.originalName}`;
+            const fileName = `${cleanLabel}${Math.floor(Math.random() * 1000)}${Date.now()}-${file.originalname}`;
             const uploadFilePath = path_1.default.join(__dirname, '..', 'assets', 'attachments', fileName);
-            yield pipelinee(file.stream, fs_1.default.createWriteStream(uploadFilePath));
+            const writeStream = fs_1.default.createWriteStream(uploadFilePath);
+            writeStream.write(file.buffer);
             return fileName;
         });
     }

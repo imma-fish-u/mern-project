@@ -33,7 +33,7 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
     const handleChangePicture = async (e) => {
         if (!e.target.files[0]) return;
         const pictureFile = await e.target.files[0];
-        // console.log(pictureFile);
+        console.log(pictureFile);
         setNewBoard({ ...newBoard, picture: pictureFile });
         const picturePreviewURL = await URL.createObjectURL(pictureFile);
         setPicturePreview(picturePreviewURL);
@@ -43,6 +43,7 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
         const data = new FormData();
         data.append('name', newBoard.name);
         data.append('picture', newBoard.picture);
+        data.append('directory', 'board-picture');
         data.append('isPrivate', newBoard.isPrivate);
         data.append('owner', user._id);
         setIsOpen(false);
