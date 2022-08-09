@@ -50,9 +50,10 @@ export default function boardReducer(state = initialState, action) {
             const currentBoardIndex = state.boards.findIndex(
                 (board) => board._id === action.payload.board._id
             );
-            if (action.payload.currentUser._id === action.payload.user._id)
-                return { ...state, boards: [...state.boards, action.payload.board] };
-            if (action.payload.board._id === state.currentBoard._id && currentBoardIndex !== -1)
+            // if (action.payload.currentUser._id === action.payload.user._id)
+            //     return { ...state, boards: [...state.boards, action.payload.board] };
+            if (action.payload.board._id === state.currentBoard._id && currentBoardIndex !== -1) {
+                console.log('1111')
                 return {
                     ...state,
                     currentBoard: {
@@ -65,7 +66,9 @@ export default function boardReducer(state = initialState, action) {
                         return board;
                     }),
                 };
-            if (action.payload.board._id !== state.currentBoard._id && currentBoardIndex !== -1)
+            }
+            if (action.payload.board._id !== state.currentBoard._id && currentBoardIndex !== -1) {
+                console.log('2222')
                 return {
                     ...state,
                     boards: state.boards.map((board) => {
@@ -74,8 +77,8 @@ export default function boardReducer(state = initialState, action) {
                         return board;
                     }),
                 };
+            }
             return { ...state };
-
         case CHANGE_STATE:
             if (
                 state.currentBoard._id === action.payload.boardID &&
