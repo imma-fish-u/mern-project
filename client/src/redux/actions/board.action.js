@@ -34,7 +34,7 @@ export const createBoard = (data) => {
             .then((res) => {
                 const board = res.data;
                 console.log(board);
-                successToast(`Board ${board.name} create !`);
+                successToast(`Проект ${board.name} создан !`);
                 return dispatch({ type: CREATE_BOARD, payload: board });
             })
             .catch((err) => {
