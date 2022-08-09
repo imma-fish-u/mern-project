@@ -5,14 +5,9 @@ import { useSelector } from 'react-redux';
 import ToastManager from './components/templates/ToastManager';
 import SocketManager from './socket/socketManager';
 import ModalManager from './components/templates/modal/ModalManager';
-import dummy from './components/data/dummy.json'
 
 const App = (props) => {
     const isLoading = useSelector((state) => state.loaderReducer);
-
-    useEffect(() => {
-        localStorage.setItem("resumeBuilder", JSON.stringify(dummy));
-      }, []);
 
     useEffect(() => {
         isLoading
