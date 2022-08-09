@@ -6,7 +6,7 @@ import { skillOptions } from "../../data/skillOptions";
 const Skills = ({ onChange, skillList, mode }) => {
     const isEdit = ["edit", "create"].includes(mode)
     return (
-        <div className="resume__container__skills">
+        <div className="resume__container__block skills">
             <div className="resume__container__title">Навыки</div>
             <div>
                 {isEdit ? (

@@ -28,14 +28,20 @@ const Work = () => {
 
     return (
       <PageTemplate
-        isHeaderElement={user._id !== current?.owner}
-        headerElement={{
+        isHeaderElement= {user._id !== current?.owner}
+        headerElement= {{
           name: "",
           link: "/profiles",
           text: "Все резюме",
         }}
         pageTitle={`Resume - ${current?.name}`}>
-          {current && <Resume mode={mode} id={url_split.current[3].slice(1)}/>}
+          {current && 
+            <Resume 
+              mode={mode} 
+              id={url_split.current[3].slice(1)}
+              isMineResume = {user._id === current?.owner}
+              />
+          }
       </PageTemplate>
     );
 }

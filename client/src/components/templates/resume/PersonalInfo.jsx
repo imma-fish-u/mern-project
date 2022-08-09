@@ -1,8 +1,9 @@
 import React from 'react';
 import Feild from './Feild';
+import CategoryTitle from '../../layouts/CategoryTitle';
 
 import { AiFillGithub } from 'react-icons/ai';
-import { FaTelegram } from 'react-icons/fa';
+import { FaTelegram, FaUserCircle } from 'react-icons/fa';
 
 const PersonalInfo = ({ mode, personalInfo, onChange }) => {
 
@@ -14,38 +15,42 @@ const PersonalInfo = ({ mode, personalInfo, onChange }) => {
     const isEdit = ["edit", "create"].includes(mode)
 
     return (
-        <div>
-            <Feild
-                isEdit={isEdit}
-                name="name"
-                label="Имя"
-                value={personalInfo.name}
-                onChange={handleOnChange}
-                placeholder="Enter Name"
-                className={"resume__container__personal__name"}
-            />
-            <Feild
-                isEdit={isEdit}
-                name="telegram"
-                label="Telegram"
-                value={`${personalInfo.telegram}`}
-                onChange={handleOnChange}
-                placeholder="Enter Telegram Link"
-                isLink={true}
-                icon={<FaTelegram />}
-                className={"resume__container__personal__telegram"}
-            />
-            <Feild
-                isEdit={isEdit}
-                name="github"
-                label="Github"
-                value={`${personalInfo.github}`}
-                onChange={handleOnChange}
-                placeholder="Enter Github Link"
-                isLink={true}
-                icon={<AiFillGithub />}
-                className={"resume__container__personal__github"}
-            />
+        <div className="resume__container__block personal">
+            <div className="personal__wrapper">
+                <CategoryTitle icon={<FaUserCircle />} title="Имя" withMarginBottom={false}/>
+                <Feild
+                    isEdit={isEdit}
+                    name="name"
+                    value={personalInfo.name}
+                    onChange={handleOnChange}
+                    placeholder="Enter Name"
+                    className={"personal__name"}
+                />
+            </div>
+            <div className="personal__wrapper">
+                <CategoryTitle icon={<FaTelegram />} title="Telegram" withMarginBottom={false}/>
+                <Feild
+                    isEdit={isEdit}
+                    name="telegram"
+                    value={`${personalInfo.telegram}`}
+                    onChange={handleOnChange}
+                    placeholder="Enter Telegram Link"
+                    isLink={true}
+                    className={"personal__telegram"}
+                />
+            </div>
+            <div className="personal__wrapper">
+                <CategoryTitle icon={<AiFillGithub />} title="Github" withMarginBottom={false}/>
+                <Feild
+                    isEdit={isEdit}
+                    name="github"
+                    value={`${personalInfo.github}`}
+                    onChange={handleOnChange}
+                    placeholder="Enter Github Link"
+                    isLink={true}
+                    className={"personal__github"}
+                />
+            </div>
         </div>)
 }
 

@@ -14,7 +14,7 @@ import Modal from '../components/utils/Modal';
 
 import { HiDotsHorizontal } from 'react-icons/hi';
 
-const Resume = ({ mode, id }) => {
+const Resume = ({ mode, id, isMineResume }) => {
   const user = useSelector((state) => state.userReducer);
   const resume = useSelector((state) => state.resumeReducer.current);
   const dispatch = useDispatch();
@@ -52,6 +52,8 @@ const Resume = ({ mode, id }) => {
     }
   }
 
+  console.log(isMineResume);
+
   return (
     <>
       {resume === 'RESUME_ERROR' ? (
@@ -75,7 +77,7 @@ const Resume = ({ mode, id }) => {
           </div>
           {(resume._id) || (mode === "create") ? (
             <div className="resume__container">
-              <div className="resume__container__form">
+              <div className="resume__container__info">
                 <Modal
                     isOpen={isOpenConfirmDeleteList}
                     setIsOpen={setIsOpenConfirmDeleteList}
@@ -96,62 +98,62 @@ const Resume = ({ mode, id }) => {
                   skillList={skillList}
                   onChange={setSkillList}
                 />
-              </div>
-              {mode === "view" ? (
-                <>
-                  <button
-                    className="resume__container__btn-menu list__top__btn-menu"
-                    onClick={() => setIsOpenListMenu(!isOpenListMenu)}>
-                    <HiDotsHorizontal />
-                  </button>
-                  <DropDown
-                  top="90px"
-                  right="-76px"
-                  isOpen={isOpenListMenu}
-                  setIsOpen={setIsOpenListMenu}>
-                    <ul className="listmenu">
-                        <li className="listmenu__item">
-                        {mode === "create" ?
-                          <Link to={`/profile/view/:${user._id}`} className="listmenu__item__btn" onClick={handleCreate}
-                            disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== ""))}>
-                            Создать
-                          </Link>
-                          :
-                          <Link to={`/profile/${mode === "edit" ? "view" : "edit"}/:${user._id}`} className="listmenu__item__btn" onClick={handleSave}
-                            disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== "")) && mode === "edit"}>
-                            {mode === "edit" ? "Сохранить" : "Изменить"}
-                          </Link>
-                        }
-                        </li>
-                        <li className="listmenu__item listmenu__divider"></li>
-                        <li className="listmenu__item">
-                          <div
-                            className="resume__container__btn__secondary listmenu__item__btn" 
-                            onClick={() => setIsOpenConfirmDeleteList(true)}>
-                            Удалить
-                          </div>
-                        </li>
-                    </ul>
-                  </DropDown>
+                {(["edit", "create"].includes(mode)) && (<>
+                  {mode === "create" ?
+                    <Link to={`/profile/view/:${user._id}`} className="resume__container__btn__primary" onClick={handleCreate}
+                      disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== ""))}>
+                      Создать
+                    </Link>
+                    :
+                    <Link to={`/profile/${mode === "edit" ? "view" : "edit"}/:${user._id}`} className="resume__container__btn__primary" onClick={handleSave}
+                      disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== "")) && mode === "edit"}>
+                      {mode === "edit" ? "Сохранить" : "Изменить"}
+                    </Link>
+                  }
+                  <div
+                    className="resume__container__btn__secondary" 
+                    onClick={() => setIsOpenConfirmDeleteList(true)}>
+                    Удалить
+                  </div>
                 </>
-              ) : (<>
-                {mode === "create" ?
-                  <Link to={`/profile/view/:${user._id}`} className="resume__container__btn__primary" onClick={handleCreate}
-                    disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== ""))}>
-                    Создать
-                  </Link>
-                  :
-                  <Link to={`/profile/${mode === "edit" ? "view" : "edit"}/:${user._id}`} className="resume__container__btn__primary" onClick={handleSave}
-                    disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== "")) && mode === "edit"}>
-                    {mode === "edit" ? "Сохранить" : "Изменить"}
-                  </Link>
-                }
-                <div
-                  className="resume__container__btn__secondary" 
-                  onClick={() => setIsOpenConfirmDeleteList(true)}>
-                  Удалить
-                </div>
-              </>)}
+                )}
+              </div>
+              {mode === "view" && (
+                <button
+                  className={`resume__container__btn-menu ${(isMineResume) ? "resume__container__btn-menu-active" : ""}`}
+                  onClick={() => setIsOpenListMenu(!isOpenListMenu)}>
+                  <HiDotsHorizontal />
+                  <DropDown
+                    top="30px"
+                    right="0px"
+                    isOpen={isOpenListMenu}
+                    setIsOpen={setIsOpenListMenu}>
+                      <ul className="listmenu">
+                          <li className="listmenu__item">
+                          {mode === "create" ?
+                            <Link to={`/profile/view/:${user._id}`} className="listmenu__item__btn" onClick={handleCreate}
+                              disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== ""))}>
+                              Создать
+                            </Link>
+                            :
+                            <Link to={`/profile/${mode === "edit" ? "view" : "edit"}/:${user._id}`} className="listmenu__item__btn" onClick={handleSave}
+                              disabled={!(projectList.length && skillList.length && Object.values(personalInfo).every(x => x !== "")) && mode === "edit"}>
+                              {mode === "edit" ? "Сохранить" : "Изменить"}
+                            </Link>
+                          }
+                          </li>
+                          <li className="listmenu__item listmenu__divider"></li>
+                          <li className="listmenu__item">
+                            <div
+                              className="resume__container__btn__secondary listmenu__item__btn" 
+                              onClick={() => setIsOpenConfirmDeleteList(true)}>
+                              Удалить
+                            </div>
+                          </li>
+                      </ul>
+                    </DropDown>
+                </button>
+              )}
             </div>
           ) : (
             <>
@@ -162,7 +164,7 @@ const Resume = ({ mode, id }) => {
         </div>  
       )}
     </>
-  )
+  );
 };
 
 export default connect()(Resume);

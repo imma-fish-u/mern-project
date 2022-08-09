@@ -22,29 +22,31 @@ const ItemList = ({ name, mode, data, onChange, passedItem }) => {
     }
 
     return (
-        <div className="my-3 border p-3">
-            <div className="resume__container__block">
+        <div className="resume__container__block project">
+            <div className="project__header">
                 <div className={`resume__container__title`}>{name}</div>
-                {isEdit && <button className="btn btn-success" onClick={() => setAdd(add => !add)}>+</button>}
+                {isEdit && <button className="project__btn-add" onClick={() => setAdd(add => !add)}>+</button>}
             </div>
 
-            {data.length > 0 ? (
-                data.map((item, index) => (
-                    <PassedItem
-                        key={item.id}
-                        item={item}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                        mode={mode}
-                    />
-                ))
-            ) : (
-                <div className="text-center d-flex justify-content-center align-items-center bg-light my-3" style={{ height: '100px' }}>
-                    <span>{`${name} не добавлены.`}</span>
-                </div>
-            )
-            }
-            {add && <PassedItem addItem={addItem} mode={"add"} />}
+            <div className="project__card-wrapper">
+                {data.length > 0 ? (
+                    data.map((item) => (
+                        <PassedItem
+                            key={item.id}
+                            item={item}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                            mode={mode}
+                        />
+                    ))
+                ) : (
+                    <div className="project__text-empty" style={{ height: '100px' }}>
+                        <span>{`${name} не добавлены.`}</span>
+                    </div>
+                )
+                }
+                {add && <PassedItem addItem={addItem} mode={"add"} />}
+            </div>
         </div>
     );
 };
