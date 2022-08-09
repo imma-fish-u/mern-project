@@ -18,7 +18,12 @@ export const isEmpty = (value) => {
 export const setRememberMeCookie = async (token) => {
     const cookie = new Cookies();
     // cookie.remove('token', { path: '/' });
-    cookie.set('token', token, { maxAge: 604800000 }); // 1 week ?
+    cookie.set('token', token, { path: "/", maxAge: 604800000 }); // 1 week ?
+};
+
+export const removeCookie = async (token) => {
+    const cookie = new Cookies();
+    cookie.remove('token', { path: '/' });
 };
 
 export const errorsManager = (err) => {

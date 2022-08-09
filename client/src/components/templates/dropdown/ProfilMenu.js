@@ -7,12 +7,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isEmpty } from '../../../utils/utils';
 import Notifications from '../modal/Notifications';
-import { useCookies } from 'react-cookie';
+import { removeCookie } from '../../../utils/utils';
 
 const ProfilMenu = ({ isOpen, setIsOpen }) => {
     const [isOpenNotification, setIsOpenNotification] = useState(false);
     const user = useSelector((state) => state.userReducer);
-    const [, , removeCookie] = useCookies();
 
     return (
         <>
@@ -54,7 +53,7 @@ const ProfilMenu = ({ isOpen, setIsOpen }) => {
                             <button
                                 className="profilmenu__navlist__item"
                                 onClick={() => {
-                                    removeCookie('token', { path: '/' });
+                                    removeCookie();
                                     document.location.reload();
                                 }}>
                                 <RiLogoutBoxRFill className="profilmenu__navlist__item__icon profilmenu__navlist__item__icon--logout" />
