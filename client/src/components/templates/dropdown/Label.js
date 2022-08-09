@@ -67,7 +67,7 @@ const Label = ({ labels, boardID, listID, cardID, isOpen, setIsOpen }) => {
         if (!labelName) return warningToast('Missing label name');
         if (!colorSelected) return warningToast('Missing label color');
         clearToastByTypes('warning');
-        successToast('Label created');
+        successToast('Ярлык создан');
         socket.emit('card add label', { boardID, listID, cardID, labelName, color: colorSelected });
     };
 
