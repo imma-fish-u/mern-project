@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
     addCard,
+    deleteCard,
     addCardLabel,
     addList,
     assignMemberToCard,
@@ -56,6 +57,10 @@ const SocketManager = (props) => {
         socket.on('add card', ({ cardCreated, listID, boardID, userID }) => {
             console.log('add card scktio');
             dispatchCallback(addCard(cardCreated, listID, boardID));
+        });
+        socket.on('delete card', ({ cardID, listID, boardID }) => {
+            console.log('delete card scktio');
+            dispatchCallback(deleteCard(cardID, listID, boardID));
         });
         socket.on('rename list', ({ rename, listID, boardID }) => {
             console.log('rename list scktio');

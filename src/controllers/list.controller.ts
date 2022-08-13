@@ -52,6 +52,18 @@ export default class ListController {
         return board?.lists[listIndex].cards[board?.lists[listIndex].cards.length - 1];
     }
 
+    public static async deleteCard(cardID: string, listID: string, boardID: string) {
+        console.log(cardID)
+        console.log(boardID)
+        const card = await boardModels
+            .updateOne(
+                { _id: boardID, lists: { $elemMatch: { _id: listID } } },
+                { $pull: { 'lists.$.cards': { _id: cardID } } }
+            )
+            .select('lists -_id');
+        console.log(card)
+    }
+
     public static async renameList(rename: string, listID: string, boardID: string) {
         await boardModels.findOneAndUpdate(
             { _id: boardID, lists: { $elemMatch: { _id: listID } } },
@@ -166,7 +178,7 @@ export default class ListController {
             {
                 $push: {
                     'lists.$.cards.$[inner].attachments': {
-                        name: attachment.originalName,
+                        name: attachment.originalname,
                         filePath: attachmentPath,
                         createdAt: Date.now(),
                     },

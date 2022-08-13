@@ -16,6 +16,7 @@ export const ADD_LIST = 'ADD_LIST';
 export const LEAVE_BOARD = 'LEAVE_BOARD';
 export const DELETE_BOARD = 'DELETE_BOARD';
 export const ADD_CARD = 'ADD_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
 export const DELETE_LIST = 'DELETE_LIST';
 export const RENAME_LIST = 'RENAME_LIST';
 export const REORDER_LIST = 'REORDER_LIST';
@@ -140,6 +141,12 @@ export const addList = (listCreated, boardID, userID) => {
 export const addCard = (cardCreated, listID, boardID) => {
     return async (dispatch) => {
         return dispatch({ type: ADD_CARD, payload: { cardCreated, listID, boardID } });
+    };
+};
+
+export const deleteCard = (cardID, listID, boardID) => {
+    return async (dispatch) => {
+        return dispatch({ type: DELETE_CARD, payload: { cardID, listID, boardID } });
     };
 };
 

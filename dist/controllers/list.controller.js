@@ -50,6 +50,16 @@ class ListController {
             return board === null || board === void 0 ? void 0 : board.lists[listIndex].cards[(board === null || board === void 0 ? void 0 : board.lists[listIndex].cards.length) - 1];
         });
     }
+    static deleteCard(cardID, listID, boardID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(cardID);
+            console.log(boardID);
+            const card = yield board_models_1.default
+                .updateOne({ _id: boardID, lists: { $elemMatch: { _id: listID } } }, { $pull: { 'lists.$.cards': { _id: cardID } } })
+                .select('lists -_id');
+            console.log(card);
+        });
+    }
     static renameList(rename, listID, boardID) {
         return __awaiter(this, void 0, void 0, function* () {
             yield board_models_1.default.findOneAndUpdate({ _id: boardID, lists: { $elemMatch: { _id: listID } } }, { $set: { 'lists.$.name': rename } });
@@ -131,7 +141,7 @@ class ListController {
             }, {
                 $push: {
                     'lists.$.cards.$[inner].attachments': {
-                        name: attachment.originalName,
+                        name: attachment.originalname,
                         filePath: attachmentPath,
                         createdAt: Date.now(),
                     },

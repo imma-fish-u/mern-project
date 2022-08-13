@@ -96,6 +96,10 @@ io.on('connection', (socket) => {
         const cardCreated = yield list_controller_1.default.addCard(name, boardID, listID);
         io.emit('add card', { cardCreated, listID, boardID, userID });
     }));
+    socket.on('delete card', ({ cardID, listID, boardID }) => __awaiter(void 0, void 0, void 0, function* () {
+        yield list_controller_1.default.deleteCard(cardID, listID, boardID);
+        io.emit('delete card', { cardID, listID, boardID });
+    }));
     socket.on('delete list', ({ listID, boardID }) => __awaiter(void 0, void 0, void 0, function* () {
         yield list_controller_1.default.deleteList(listID, boardID);
         io.emit('delete list', { listID, boardID });

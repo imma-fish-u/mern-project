@@ -34,6 +34,7 @@ class BoardController {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, isPrivate, owner } = req.body;
             const boardPicture = req.file;
+            console.log(boardPicture);
             try {
                 if (!name)
                     throw Error('MISSING_NAME : Missing board name');
@@ -111,7 +112,6 @@ class BoardController {
                         if (utils_1.default.isEmpty(docs))
                             throw Error('BOARD_UNKNOWN : Error board unknown');
                         const board = yield docs.toObject();
-                        console.log('PASSING EMPTY DOCS GET BOARD');
                         if (board.isPrivate) {
                             if (!board.members.includes(userID))
                                 throw Error('PRIVATE_BOARD : Error board is private');

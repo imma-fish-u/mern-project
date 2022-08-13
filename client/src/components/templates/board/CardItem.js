@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react';
+import socket from '../../../utils/socket';
 import { BsPaperclip } from 'react-icons/bs';
-import { MdComment } from 'react-icons/md';
-import { MdAdd } from 'react-icons/md';
+import { MdComment, MdAdd, MdDelete } from 'react-icons/md';
 import Button from '../../utils/Button';
 import { CARD_MODAL } from '../modal/ModalManager';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../../redux/actions/modal.action';
 import { getPicturePath } from '../../../utils/utils';
 import CardLabel from './CardLabel';
 
 const CardItem = ({ _id, title, picture, labels, members, attachments, listID, listName }) => {
-    const dispatch = useDispatch();
+    const dispatch  = useDispatch();
+    const boardID = useSelector((state) => state.boardReducer.currentBoard._id);
+
+    const handleCardDelete = (e) => {
+        e.stopPropagation();
+        socket.emit('delete card', { cardID: _id, listID, boardID });
+    }
 
     return (
         <>
@@ -63,6 +69,9 @@ const CardItem = ({ _id, title, picture, labels, members, attachments, listID, l
                         <button className="card__bottom__utils__btn">
                             <BsPaperclip />
                             <span className="card__bottom__utils__btn__number">1</span>
+                        </button>
+                        <button className="card__bottom__utils__btn" onClick={(e) => handleCardDelete(e)}>
+                            <MdDelete />
                         </button>
                     </div>
                 </div>

@@ -78,6 +78,10 @@ io.on('connection', (socket) => {
         const cardCreated = await ListController.addCard(name, boardID, listID);
         io.emit('add card', { cardCreated, listID, boardID, userID });
     });
+    socket.on('delete card', async ({ cardID, listID, boardID }) => {
+        await ListController.deleteCard(cardID, listID, boardID);
+        io.emit('delete card', { cardID, listID, boardID });
+    });
     socket.on('delete list', async ({ listID, boardID }) => {
         await ListController.deleteList(listID, boardID);
         io.emit('delete list', { listID, boardID });

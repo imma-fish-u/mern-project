@@ -13,6 +13,7 @@ import {
     LEAVE_BOARD,
     DELETE_BOARD,
     ADD_CARD,
+    DELETE_CARD,
     DELETE_LIST,
     RENAME_LIST,
     REORDER_LIST,
@@ -169,6 +170,23 @@ export default function boardReducer(state = initialState, action) {
                             list._id === action.payload.listID
                         )
                             list.cards.push(action.payload.cardCreated);
+                        return list;
+                    }),
+                },
+            };
+        case DELETE_CARD:
+            if (state.currentBoard._id !== action.payload.boardID || isEmpty(state.currentBoard))
+                return { ...state };
+
+            return {
+                ...state,
+                currentBoard: {
+                    ...state.currentBoard,
+                    lists: state.currentBoard.lists.map((list) => {
+                        if (list._id === action.payload.listID) {
+                            const newCards = list.cards.filter((card) => (card._id !== action.payload.cardID));
+                            list.cards = newCards;
+                        }
                         return list;
                     }),
                 },
