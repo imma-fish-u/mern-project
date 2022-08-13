@@ -37,7 +37,7 @@ const Comments = ({ boardID, listID, cardID, comments }) => {
 
     const handleFormatDate = (createdAt) => {
         const { dayNum, monthLetter, hour } = cutMongooseTimestampInDate(createdAt);
-        return `${dayNum} ${monthLetter} at ${hour}`;
+        return `${dayNum} ${monthLetter}, ${hour}`;
     };
 
     useEffect(() => {
