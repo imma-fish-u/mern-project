@@ -67,15 +67,6 @@
     }
 }
 
-@mixin input($width) {
-    @include radius('small');
-    padding: 6px;
-    border: 1px solid $neutralMidDark;
-    box-sizing: border-box;
-    margin-bottom: 12px;
-    width: 100%;
-}
-
 @mixin button($padding: 'basic', $rounded: 'basic', $type: 'primary', $color: '', $text: white) {
     @include display(flex, unset, center, center);
     cursor: pointer;

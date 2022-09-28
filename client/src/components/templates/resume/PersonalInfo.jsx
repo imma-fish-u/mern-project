@@ -8,8 +8,10 @@ import { FaTelegram, FaUserCircle } from 'react-icons/fa';
 const PersonalInfo = ({ mode, personalInfo, onChange }) => {
 
     const handleOnChange = event => {
+        console.log(event.target)
         const { name, value } = event.target;
         onChange({ ...personalInfo, [name]: value });
+        console.log({ ...personalInfo, [name]: value })
     };
 
     const isEdit = ["edit", "create"].includes(mode)

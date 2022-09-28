@@ -52,8 +52,6 @@ class ListController {
     }
     static deleteCard(cardID, listID, boardID) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(cardID);
-            console.log(boardID);
             const card = yield board_models_1.default
                 .updateOne({ _id: boardID, lists: { $elemMatch: { _id: listID } } }, { $pull: { 'lists.$.cards': { _id: cardID } } })
                 .select('lists -_id');

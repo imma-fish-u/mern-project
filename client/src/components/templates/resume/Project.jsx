@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-
+import { getPicturePath } from '../../../utils/utils';
 import { nanoid } from "nanoid";
 import Feild from "./Feild";
 import DropDown from '../../utils/Dropdown';
 import { HiDotsHorizontal, HiExternalLink } from 'react-icons/hi';
-
+import ImgEditable from '../ImgEditable';
 
 const defaultValues = {
     title: "",
     description: "",
     link: "",
+    picture: "",
 };
 
 const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
@@ -30,12 +31,30 @@ const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(project);
     }
 
     return (
         <form className="project__card" onSubmit={handleSubmit}>
+            {/* {(isEdit) ? 
+                <ImgEditable 
+                    isOpen={isEdit} 
+                    newItem={project} 
+                    setNewItem={setProject} 
+                />
+                :
+                <img
+                    className="input__image"
+                    src={getPicturePath('project', project.picture)}
+                    alt={`project`}
+                /> 
+            } */}
+            <ImgEditable 
+                isOpen={isEdit} 
+                newItem={project} 
+                setNewItem={setProject} 
+            />
             <div className="project__info">
-                {/* <EditableImg isEdit={isEdit} onChange={handleOnChange}/> */}
                 <Feild
                     isEdit={isEdit}
                     name="title"
@@ -67,35 +86,46 @@ const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
                 />
             </div>
             {(["edit", "create"].includes(mode)) && (
-                <button
-                    className={`resume__container__btn-menu resume__container__btn-menu-active`}
-                    onClick={() => setIsOpenListMenu(!isOpenListMenu)}>
-                    <HiDotsHorizontal />
-                    <DropDown
-                        top="30px"
-                        right="0px"
-                        isOpen={isOpenListMenu}
-                        setIsOpen={setIsOpenListMenu}>
-
-                                <ul className="listmenu">
-                                    <li className="listmenu__item">
-                                        <button className="resume__container__btn__primary" onClick={handleClick}
-                                            disabled={!(project.title && project.description && project.link) && isEdit}>
-                                            {isEdit ? "Сохранить" : "Изменить"}
-                                        </button>
-                                    </li>
-                                    <li className="listmenu__item listmenu__divider"></li>
-                                    <li className="listmenu__item">
-                                        <button className="resume__container__btn__secondary" onClick={() => deleteItem(project._id)}>
-                                            Удалить
-                                        </button>
-                                    </li>  
-                                </ul>
-                    </DropDown>
-                </button>
+                (!isEdit) ? 
+                    <button
+                        className={`resume__container__btn-menu resume__container__btn-menu-active`}
+                        onClick={() => setIsOpenListMenu(!isOpenListMenu)}>
+                        <HiDotsHorizontal />
+                        <DropDown
+                            top="30px"
+                            right="0px"
+                            isOpen={isOpenListMenu}
+                            setIsOpen={setIsOpenListMenu}>
+                                    <ul className="listmenu">
+                                        <li className="listmenu__item">
+                                            <button className="resume__container__btn__primary" onClick={handleClick}
+                                                disabled={!(project.title && project.description && project.link) && isEdit}>
+                                                Изменить
+                                            </button>
+                                        </li>
+                                        <li className="listmenu__item listmenu__divider"></li>
+                                        <li className="listmenu__item">
+                                            <button className="resume__container__btn__secondary" onClick={() => deleteItem(project._id)}>
+                                                Удалить
+                                            </button>
+                                        </li>  
+                                    </ul>
+                        </DropDown>
+                    </button>
+                    :
+                    <div className="resume__container__btns">
+                        <button className="resume__container__btn__primary" type="submit"
+                            disabled={!(project.title && project.description && project.link)}
+                            onClick={handleClick}>
+                            Сохранить
+                        </button>
+                        <button className="resume__container__btn__secondary" onClick={() => addItem("-")}>
+                            Отмена
+                        </button>
+                    </div>
             )}
             {(mode === "add") && (
-                <>
+                <div className="resume__container__btns">
                     <button className="resume__container__btn__primary" type="submit"
                         disabled={!(project.title && project.description && project.link)}
                         onClick={() => addItem(project)}>
@@ -104,7 +134,7 @@ const Project = ({ item, addItem, deleteItem, editItem, mode }) => {
                     <button className="resume__container__btn__secondary" onClick={() => addItem("-")}>
                         Отмена
                     </button>
-                </>
+                </div>
             )}
         </form>
     );

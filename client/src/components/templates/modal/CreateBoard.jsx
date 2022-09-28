@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { RiAddFill } from 'react-icons/ri';
 import Modal from '../../utils/Modal';
 import { MdImage, MdLock } from 'react-icons/md';
-import { IoIosAddCircleOutline } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { createBoard } from '../../../redux/actions/board.action';
 import Button from '../../utils/Button';
+import ImgEditable from '../ImgEditable';
 
 const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.userReducer);
-    const [picturePreview, setPicturePreview] = useState('');
     const [newBoard, setNewBoard] = useState({
         name: '',
         picture: '',
@@ -20,7 +19,6 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
 
     useEffect(() => {
         if (!isOpen) {
-            setPicturePreview('');
             setNewBoard({
                 name: '',
                 picture: '',
@@ -29,15 +27,6 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
             });
         }
     }, [isOpen]);
-
-    const handleChangePicture = async (e) => {
-        if (!e.target.files[0]) return;
-        const pictureFile = await e.target.files[0];
-        console.log(pictureFile);
-        setNewBoard({ ...newBoard, picture: pictureFile });
-        const picturePreviewURL = await URL.createObjectURL(pictureFile);
-        setPicturePreview(picturePreviewURL);
-    };
 
     const handleCreateBoard = () => {
         const data = new FormData();
@@ -61,27 +50,11 @@ const ModalCreateBoard = ({ isOpen, setIsOpen }) => {
                 btnConfirmMessage="Создать"
                 confirmFunction={() => handleCreateBoard()}>
                 <div className="createboardmodal">
-                    <label
-                        className={`createboardmodal__input__image ${
-                            picturePreview ? '' : 'no-preview'
-                        }`}
-                        htmlFor="boardmodal_input_image"
-                        style={{ backgroundImage: `url(${picturePreview})` }}>
-                        <div className={`${picturePreview ? 'preview-background' : ''}`}>
-                            <IoIosAddCircleOutline
-                                className={`createboardmodal__input__image__icon ${
-                                    picturePreview ? 'preview-active' : ''
-                                }`}
-                            />
-                        </div>
-                        <input
-                            type="file"
-                            id="boardmodal_input_image"
-                            onChange={handleChangePicture}
-                            accept=".png , .jpg , .jpeg"
-                            hidden
-                        />
-                    </label>
+                    <ImgEditable 
+                        isOpen={isOpen} 
+                        newItem={newBoard} 
+                        setNewItem={setNewBoard} 
+                    />
                     <input
                         value={newBoard.name}
                         onChange={(e) => setNewBoard({ ...newBoard, name: e.target.value })}

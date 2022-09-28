@@ -54,6 +54,8 @@ export const getPicturePath = (model, image) => {
             return `${API_URL}/board-picture/${image}`;
         case 'user':
             return `${API_URL}/user-picture/${image || 'defaultUserPicture.png'}`;
+        case 'project': 
+            return `${API_URL}/project-picture/${image || 'defaultProjectPicture.png'}`;
         case 'attachment':
             return `${API_URL}/attachment/${image}`;
         default:

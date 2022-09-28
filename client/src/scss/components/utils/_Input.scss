@@ -1,0 +1,37 @@
+.input {
+  @include radius('small');
+  padding: 6px;
+  border: 1px solid $neutralMidDark;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  width: 100%;
+
+  &__image {
+    @include radius('small');
+    @include display(flex, unset, center, center);
+    // border: 1px dashed $neutralMidDark;
+    height: 90px;
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    color: $neutralMidDark;
+    cursor: pointer;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+        .preview-background {
+            opacity: 1;
+        }
+    }
+  }
+}

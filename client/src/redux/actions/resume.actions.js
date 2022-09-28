@@ -7,6 +7,7 @@ export const ADD_RESUME = 'ADD_RESUME';
 export const DELETE_RESUME = 'DELETE_RESUME';
 export const SET_CURRENT = 'SET_CURRENT';
 export const UPDATE_RESUME = 'UPDATE_RESUME';
+export const FILTER_RESUME = 'FILTER_RESUME';
 export const CLEAN_CURRENTRESUME = 'CLEAN_CURRENTRESUME';
 export const SET_LOADING = 'SET_LOADING';
 export const RESUMES_ERROR = 'RESUMES_ERROR';
@@ -107,12 +108,21 @@ export const setCurrent = (id) => {
   };
 };
 
+export const filterAction = (signObj) => {
+  return (dispatch, getState)=>{
+    let resumes = [ ...getState().resumes]; // Не фильтрованный список
+    Object.keys(signObj).map((signName)=>{
+      return resumes.filter((item)=>( item[signName] ===  signObj[signName]))
+    });
+    dispatch({ type: FILTER_RESUME, payload: resumes}); 
+  }
+}
+
 export const cleanCurrentResume = () => {
   return (dispatch) => {
       return dispatch({ type: CLEAN_CURRENTRESUME, payload: {} });
   };
 };
-
 
 // Set loading to true
 export const setLoading = () => {

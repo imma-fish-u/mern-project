@@ -52,5 +52,5 @@ export default class FileManager {
         return fileName;
     }
 
-    private deletePicture() {}
+    public static async deletePicture() {}
 }

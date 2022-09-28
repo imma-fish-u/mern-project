@@ -53,8 +53,6 @@ export default class ListController {
     }
 
     public static async deleteCard(cardID: string, listID: string, boardID: string) {
-        console.log(cardID)
-        console.log(boardID)
         const card = await boardModels
             .updateOne(
                 { _id: boardID, lists: { $elemMatch: { _id: listID } } },

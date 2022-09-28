@@ -15,6 +15,7 @@ export interface IProjectList extends mongoose.Document {
   title: string;
   description: string;
   link: string;
+  project: string;
 }
 
 export interface ISkillList extends mongoose.Document {
@@ -46,6 +47,9 @@ const ResumeSchema: Schema = new Schema (
           type: String
         },
         link: {
+          type: String,
+        },
+        picture: {
           type: String,
         },
       }

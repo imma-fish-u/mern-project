@@ -52,8 +52,6 @@ const Resume = ({ mode, id, isMineResume }) => {
     }
   }
 
-  console.log(isMineResume);
-
   return (
     <>
       {resume === 'RESUME_ERROR' ? (
@@ -85,7 +83,11 @@ const Resume = ({ mode, id, isMineResume }) => {
                     confirmMessage="Вы уверены, что хотите удалить резюме ?"
                     confirmFunction={() => handleDelete()}
                 />
-                <PersonalInfo mode={mode} personalInfo={personalInfo} onChange={setPersonalInfo} />
+                <PersonalInfo 
+                  mode={mode} 
+                  personalInfo={personalInfo} 
+                  onChange={setPersonalInfo} 
+                />
                 <ItemList
                   data={projectList}
                   onChange={setProjectList}

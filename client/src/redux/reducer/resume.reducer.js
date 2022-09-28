@@ -5,6 +5,7 @@ import {
   ADD_RESUME,
   DELETE_RESUME,
   UPDATE_RESUME,
+  FILTER_RESUME,
   SET_CURRENT,
   CLEAN_CURRENTRESUME,
 } from '../actions/resume.actions';
@@ -44,6 +45,11 @@ export default (state = initialState, action) => {
           resume.id === action.payload.id ? action.payload : resume
         )
       };
+    case FILTER_RESUME:  
+      return {
+        ...state,
+        resumes: action.payload
+      }
     case SET_CURRENT:
       return { ...state, current: action.payload };
     case CLEAN_CURRENTRESUME:

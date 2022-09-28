@@ -45,6 +45,9 @@ const ResumeSchema = new mongoose_1.Schema({
             link: {
                 type: String,
             },
+            picture: {
+                type: String,
+            },
         }
     ],
     skillList: [
