@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getResumes } from "../redux/actions/resume.actions";
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { getResumes } from '../redux/actions/resume.actions';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import PageTemplate from "../components/templates/PageTemplate";
-import Loader from "../components/templates/resume/Loader";
-import Card from "../components/templates/resume/Card";
-import Search from "../components/utils/Search";
+import PageTemplate from '../components/templates/PageTemplate';
+import Loader from '../components/templates/resume/Loader';
+import Card from '../components/templates/resume/Card';
+import Search from '../components/utils/Search';
 
-import { skillCategories, skillOptions } from "../components/data/skillOptions";
+import { skillCategories, skillOptions } from '../components/data/skillOptions';
 
 const Resumes = () => {
-  const [categoryFilter, setCategoryFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [skillFilter, setSkillFilter] = useState([]);
   const resumes = useSelector((state) => state.resumeReducer.resumes);
   const dispatch = useDispatch();
@@ -31,30 +32,34 @@ const Resumes = () => {
     setSkillFilter([...skillFilter, value]);
   };
 
+  const handleSearch = (data) => {
+    return data.filter((card) => card.name.toLowerCase().includes(searchQuery));
+  };
+
   return (
-    <PageTemplate pageTitle="Allresumes">
-      <div className="wrapper allboards">
-        <div className="allresumes__top">
-          <h1 className="allresumes__top__title">Все резюме</h1>
-          <Search />
+    <PageTemplate pageTitle='Allresumes'>
+      <div className='wrapper allboards'>
+        <div className='allresumes__top'>
+          <h1 className='allresumes__top__title'>Все резюме</h1>
+          <Search setSearchQuery={setSearchQuery} />
         </div>
 
-        <div className="allresumes__category-filter">
+        <div className='allresumes__category-filter'>
           {skillCategories.map((category) => (
             <div onClick={() => setCategoryFilter(category)}>{category}</div>
           ))}
         </div>
 
-        <div className="allresumes__skill-filter">
-          <ul className="allresumes__container__items__labels">
-            {categoryFilter !== "All"
+        <div className='allresumes__skill-filter'>
+          <ul className='allresumes__container__items__labels'>
+            {categoryFilter !== 'All'
               ? skillOptions
                   .filter((item) => item.category === categoryFilter)
                   .map(({ value }, el) => (
                     <li
                       key={el}
                       onClick={() => handleFilter(value)}
-                      className="cardlabel allresumes__container__items__labels__skill"
+                      className='cardlabel allresumes__container__items__labels__skill'
                     >
                       {value}
                     </li>
@@ -63,7 +68,7 @@ const Resumes = () => {
                   <li
                     key={el}
                     onClick={() => handleFilter(value)}
-                    className="cardlabel allresumes__container__items__labels__skill"
+                    className='cardlabel allresumes__container__items__labels__skill'
                   >
                     {value}
                   </li>
@@ -71,15 +76,15 @@ const Resumes = () => {
           </ul>
         </div>
 
-        <div className="allresumes__container">
+        <div className='allresumes__container'>
           {!loading && resumes.length === 0 ? (
-            <p className="center">Пока что нет резюме...</p>
+            <p className='center'>Пока что нет резюме...</p>
           ) : (
-            resumes.map((resume) => (
+            handleSearch(resumes).map((resume) => (
               <Link
                 to={`/profile/view/:${resume.owner}`}
                 key={resume._id}
-                className="allresumes__container__items"
+                className='allresumes__container__items'
               >
                 <Card {...resume}></Card>
               </Link>
