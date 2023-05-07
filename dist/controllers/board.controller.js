@@ -63,7 +63,13 @@ class BoardController {
             }
             catch (err) {
                 console.log('ERROR CREATE BOARD');
-                const errors = ErrorManager_1.default.checkErrors(['MAX_SIZE', 'INVALID_TYPE', 'MISSING_NAME', 'INVALID_USER_ID', 'NAME_MAX_LENGTH'], err);
+                const errors = ErrorManager_1.default.checkErrors([
+                    'MAX_SIZE',
+                    'INVALID_TYPE',
+                    'MISSING_NAME',
+                    'INVALID_USER_ID',
+                    'NAME_MAX_LENGTH',
+                ], err);
                 console.log(err);
                 res.status(500).send(errors);
             }
@@ -76,7 +82,9 @@ class BoardController {
             const userBoards = utils_1.default.toObject(yield user_model_1.default.findById(userID).select('boards -_id'));
             const boards = yield utils_1.default.toObject(yield board_models_1.default.find({ isPrivate: false }));
             for (let i = 0; i < boards.length; i++) {
-                const boardMembers = yield user_model_1.default.find({ _id: { $in: boards[i].members } }).select('pseudo _id picture');
+                const boardMembers = yield user_model_1.default.find({
+                    _id: { $in: boards[i].members },
+                }).select('pseudo _id picture');
                 boards[i].members = yield boardMembers;
             }
             res.status(200).send(boards);
@@ -89,7 +97,9 @@ class BoardController {
             const userBoards = utils_1.default.toObject(yield user_model_1.default.findById(userID).select('boards -_id'));
             const boards = yield utils_1.default.toObject(yield board_models_1.default.find({ _id: { $in: userBoards.boards } }));
             for (let i = 0; i < boards.length; i++) {
-                const boardMembers = yield user_model_1.default.find({ _id: { $in: boards[i].members } }).select('pseudo _id picture');
+                const boardMembers = yield user_model_1.default.find({
+                    _id: { $in: boards[i].members },
+                }).select('pseudo _id picture');
                 boards[i].members = yield boardMembers;
             }
             res.status(200).send(boards);
@@ -191,18 +201,26 @@ class BoardController {
     }
     static changeState(boardID, state) {
         return __awaiter(this, void 0, void 0, function* () {
-            const board = yield board_models_1.default.findByIdAndUpdate(boardID, { $set: { isPrivate: state } });
+            const board = yield board_models_1.default.findByIdAndUpdate(boardID, {
+                $set: { isPrivate: state },
+            });
         });
     }
     static banMember(boardID, memberBannedID) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield user_model_1.default.findByIdAndUpdate(memberBannedID, { $pull: { boards: boardID } });
-            yield board_models_1.default.findByIdAndUpdate(boardID, { $pull: { members: memberBannedID } });
+            yield user_model_1.default.findByIdAndUpdate(memberBannedID, {
+                $pull: { boards: boardID },
+            });
+            yield board_models_1.default.findByIdAndUpdate(boardID, {
+                $pull: { members: memberBannedID },
+            });
         });
     }
     static changeDescription(description, boardID) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield board_models_1.default.findByIdAndUpdate(boardID, { $set: { description: description } });
+            yield board_models_1.default.findByIdAndUpdate(boardID, {
+                $set: { description: description },
+            });
         });
     }
     static leaveBoard(userID, boardID) {

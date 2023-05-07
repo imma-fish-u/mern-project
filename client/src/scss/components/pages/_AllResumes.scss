@@ -2,67 +2,67 @@
   @include wrapper();
 
   &__top {
-      @include display(flex, unset, space-between, center);
-      margin-bottom: 60px;
+    @include display(flex, unset, space-between, center);
+    margin-bottom: 60px;
 
-      &__title {
-          color: $neutralDark;
-          font-size: 1.4rem;
-          font-weight: 500;
-      }
+    &__title {
+      color: $neutralDark;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
   }
 
   &__container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 243px);
-      gap: 50px;
-      justify-content: center;
-      padding-bottom: 50px;
-      text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 243px);
+    gap: 50px;
+    justify-content: center;
+    padding-bottom: 50px;
+    text-decoration: none;
 
-      &__items {
-          @include resetLink();
-          @include focus();
-          @include display(flex, column, space-between, unset);
-          cursor: pointer;
-          box-sizing: border-box;
-          width: 100%;
-          background-color: $neutralLightest;
-          padding: 10px;
-          border-radius: 12px;
-          transition: 0.3s !important;
-          position: relative;
-          animation: boardPop 1s;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    &__items {
+      @include resetLink();
+      @include focus();
+      @include display(flex, column, space-between, unset);
+      cursor: pointer;
+      box-sizing: border-box;
+      width: 100%;
+      background-color: $neutralLightest;
+      padding: 10px;
+      border-radius: 12px;
+      transition: 0.3s !important;
+      position: relative;
+      animation: boardPop 1s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-          &:hover {
-              transform: rotate(1deg);
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 1px $primary;
-          }
-
-          &__img {
-              background-color: $primaryLight;
-              height: 180px;
-              margin-bottom: 10px;
-              border-radius: 12px;
-          }
-
-          &__title {
-              display: inline-block;
-              text-align: start;
-              margin-bottom: 16px;
-              font-size: 1.1rem;
-          }
-
-          &__labels {
-              list-style: none;
-              display: flex;
-
-              &__skill {
-                  background-color: rgba($primary, 0.3);;
-                  color: $primary;
-              }
-          }
+      &:hover {
+        transform: rotate(1deg);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 1px $primary;
       }
+
+      &__img {
+        background-color: $primaryLight;
+        height: 180px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+      }
+
+      &__title {
+        display: inline-block;
+        text-align: start;
+        margin-bottom: 16px;
+        font-size: 1.1rem;
+      }
+
+      &__labels {
+        list-style: none;
+        display: flex;
+
+        &__skill {
+          background-color: rgba($primary, 0.3);
+          color: $primary;
+        }
+      }
+    }
   }
 }

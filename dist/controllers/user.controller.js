@@ -34,12 +34,13 @@ class UserController {
     static register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { pseudo, email, password } = req.body;
-            const resume = "";
+            const resume = '';
             try {
                 const isEmailExist = yield user_model_1.default.findOne({ email });
                 if (isEmailExist)
                     throw Error('EMAIL_ALREADY_EXIST : Email already exists');
                 yield user_model_1.default.create({ pseudo, email, password, resume });
+                console.log(pseudo, email, password, resume);
                 res.sendStatus(200);
             }
             catch (err) {
@@ -51,7 +52,7 @@ class UserController {
     static login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.body;
-            console.log('LOGIN');
+            console.log(email, password);
             user_model_1.default.findOne({ email }, (err, docs) => __awaiter(this, void 0, void 0, function* () {
                 try {
                     if (err || !docs || !email || !password)
